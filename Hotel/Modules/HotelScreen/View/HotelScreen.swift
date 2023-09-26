@@ -10,13 +10,13 @@ import SwiftUI
 struct HotelScreen: View {
     var body: some View {
         VStack {
-            
+            PhotoCarouselView()
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
                 Text(R.Strings.Hotel.title)
-                    .customFont(.sfProDisplay(.heavyItalic), ofSize: 16)
+                    .sfProDisplayFont(ofWeight: 500, size: 18)
             }
         }
     }

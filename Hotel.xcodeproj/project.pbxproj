@@ -32,6 +32,8 @@
 		4FEDCC102AC2E81900C3BEC2 /* SF-Pro-Display-LightItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDCBF32AC2E40C00C3BEC2 /* SF-Pro-Display-LightItalic.otf */; };
 		4FEDCC112AC2E81900C3BEC2 /* SF-Pro-Display-Ultralight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDCBEC2AC2E40B00C3BEC2 /* SF-Pro-Display-Ultralight.otf */; };
 		4FEDCC122AC2E81900C3BEC2 /* SF-Pro-Display-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDCBFA2AC2E40D00C3BEC2 /* SF-Pro-Display-Bold.otf */; };
+		4FEDCC152AC2EBC400C3BEC2 /* SFProDisplayFontsEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDCC142AC2EBC400C3BEC2 /* SFProDisplayFontsEnum.swift */; };
+		4FEDCC1B2AC2EEDD00C3BEC2 /* PhotoCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDCC1A2AC2EEDD00C3BEC2 /* PhotoCarouselView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,7 +63,9 @@
 		4FEDCBF92AC2E40D00C3BEC2 /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
 		4FEDCBFA2AC2E40D00C3BEC2 /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
 		4FEDCBFF2AC2E49400C3BEC2 /* Text+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text+Font.swift"; sourceTree = "<group>"; };
-		4FEDCC132AC2E84A00C3BEC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4FEDCC132AC2E84A00C3BEC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FEDCC142AC2EBC400C3BEC2 /* SFProDisplayFontsEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFProDisplayFontsEnum.swift; sourceTree = "<group>"; };
+		4FEDCC1A2AC2EEDD00C3BEC2 /* PhotoCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCarouselView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,10 +99,11 @@
 			isa = PBXGroup;
 			children = (
 				4FEDCC132AC2E84A00C3BEC2 /* Info.plist */,
+				4FEDCC192AC2EEBF00C3BEC2 /* Shared Views */,
+				4FEDCC162AC2EE8900C3BEC2 /* Core */,
 				4FEDCBFC2AC2E42A00C3BEC2 /* Extensions */,
 				4FEDCBE42AC2E2B800C3BEC2 /* Resources */,
 				4FEDCBDF2AC2E26200C3BEC2 /* Modules */,
-				4FEDCBD12AC2E0C900C3BEC2 /* HotelApp.swift */,
 				4FEDCBD32AC2E0C900C3BEC2 /* ContentView.swift */,
 				4FEDCBD72AC2E0CB00C3BEC2 /* Preview Content */,
 			);
@@ -176,6 +181,7 @@
 				4FEDCBF52AC2E40C00C3BEC2 /* SF-Pro-Display-ThinItalic.otf */,
 				4FEDCBEC2AC2E40B00C3BEC2 /* SF-Pro-Display-Ultralight.otf */,
 				4FEDCBF82AC2E40D00C3BEC2 /* SF-Pro-Display-UltralightItalic.otf */,
+				4FEDCC142AC2EBC400C3BEC2 /* SFProDisplayFontsEnum.swift */,
 			);
 			path = "SF Pro Display";
 			sourceTree = "<group>";
@@ -186,6 +192,22 @@
 				4FEDCBFF2AC2E49400C3BEC2 /* Text+Font.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4FEDCC162AC2EE8900C3BEC2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				4FEDCBD12AC2E0C900C3BEC2 /* HotelApp.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		4FEDCC192AC2EEBF00C3BEC2 /* Shared Views */ = {
+			isa = PBXGroup;
+			children = (
+				4FEDCC1A2AC2EEDD00C3BEC2 /* PhotoCarouselView.swift */,
+			);
+			path = "Shared Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,7 +299,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FEDCBE32AC2E27700C3BEC2 /* HotelScreen.swift in Sources */,
+				4FEDCC152AC2EBC400C3BEC2 /* SFProDisplayFontsEnum.swift in Sources */,
 				4FEDCC002AC2E49400C3BEC2 /* Text+Font.swift in Sources */,
+				4FEDCC1B2AC2EEDD00C3BEC2 /* PhotoCarouselView.swift in Sources */,
 				4FEDCBE62AC2E2E800C3BEC2 /* Resources.swift in Sources */,
 				4FEDCBD42AC2E0C900C3BEC2 /* ContentView.swift in Sources */,
 				4FEDCBD22AC2E0C900C3BEC2 /* HotelApp.swift in Sources */,
