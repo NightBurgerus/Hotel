@@ -37,6 +37,23 @@ struct R {
             static let moreInfo = "Подробнее о номере"
             static let chooseApartment = "Выбрать номер"
         }
+        
+        struct Booking {
+            private init() {}
+            
+            static let title = "Бронирование"
+            static let departure = "Вылет из"
+            static let arrivalCountry = "Страна, город"
+            static let tourDates = "Даты"
+            static let numberOfNights = "Кол-во ночей"
+            static let hotel = "Отель"
+            static let room = "Номер"
+            static let nutrition = "Питание"
+            
+            static let buyerInfo = "Информация о покупателе"
+            static let dataDontTransfer = "Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту"
+            
+        }
     }
     
     struct Images {
@@ -66,5 +83,9 @@ struct R {
         static let darkGray     = Color("darkGray")
         /// red: 0.91, green: 0.91, blue: 0.93, alpha: 1
         static let gray232      = Color("gray232")
+        static let gray246      = Color("gray246")
+        static let lightBlack   = Color("lightBlack")
+        static let gray066      = Color("gray066")
+        static let gray096      = Color("gray096")
     }
 }

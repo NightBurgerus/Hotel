@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         NavigationView {
-           HotelScreen()
+           BookingScreen()
         }
         .onAppear {
             let appearance = UINavigationBarAppearance()

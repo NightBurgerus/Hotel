@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ApartmentScreen: View {
+struct BookingScreen: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
@@ -21,7 +21,7 @@ struct ApartmentScreen: View {
 }
 
 // MARK: - Name Block
-private extension ApartmentScreen {
+private extension BookingScreen {
     var rating: some View {
         RatingView(rating: 5, ratingName: "Превосходно")
     }
@@ -63,7 +63,7 @@ private extension ApartmentScreen {
 }
 
 // MARK: - Booking Info
-private extension ApartmentScreen {
+private extension BookingScreen {
     var data: [(row: String, data: String)] {
         [
             ("Вылет из", "Санкт-Петербург"),
@@ -95,22 +95,47 @@ private extension ApartmentScreen {
 }
 
 // MARK: - Buyer Info
-private extension ApartmentScreen {
+private extension BookingScreen {
+    var buyerInfoLabel: some View {
+        HStack {
+            Text(R.Strings.Booking.buyerInfo)
+                .customFont(.sfProDisplay(.medium), ofSize: 22)
+            Spacer()
+        }
+    }
+    
+    var dataDontTransferLabel: some View {
+        HStack {
+            Text(R.Strings.Booking.dataDontTransfer)
+                .customFont(.sfProDisplay(.regular), ofSize: 14)
+                .foregroundColor(R.Colors.gray)
+                .multilineTextAlignment(.leading)
+            Spacer()
+        }
+    }
     
     var buyerBlock: some View {
         BlockView {
-            VStack {
+            VStack(spacing: 0) {
+                buyerInfoLabel.padding(.bottom, 20)
+                VStack(spacing: 8) {
+                    PhoneTextField(phone: .constant(""))
+                    GeneralTextField(title: "Почта", placeholder: "examplemail.000@mail.ru", text: .constant(""))
+                }.padding(.bottom, 8)
                 
+                dataDontTransferLabel
             }
             .padding(16)
         }
     }
 }
 
+
+
 struct ApartmentScreenPreview: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            ApartmentScreen()
+            BookingScreen()
         }
     }
 }
