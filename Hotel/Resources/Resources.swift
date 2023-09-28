@@ -26,6 +26,8 @@ struct R {
             
             static let notIncluded = "Что не включено"
             static let notIncludedSubtitle = "Самое необходимое"
+            
+            static let toApartmentChoose = "К выбору номера"
         }
     }
     

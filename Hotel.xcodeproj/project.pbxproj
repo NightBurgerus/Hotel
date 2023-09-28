@@ -14,6 +14,7 @@
 		4FACA6772AC37F120090A8B1 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA6762AC37F120090A8B1 /* View+Extensions.swift */; };
 		4FACA6792AC381A10090A8B1 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA6782AC381A10090A8B1 /* Labels.swift */; };
 		4FACA67B2AC471060090A8B1 /* LabelsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA67A2AC471060090A8B1 /* LabelsList.swift */; };
+		4FACA67D2AC574FD0090A8B1 /* GeneralButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA67C2AC574FD0090A8B1 /* GeneralButton.swift */; };
 		4FEDCBD22AC2E0C900C3BEC2 /* HotelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDCBD12AC2E0C900C3BEC2 /* HotelApp.swift */; };
 		4FEDCBD42AC2E0C900C3BEC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDCBD32AC2E0C900C3BEC2 /* ContentView.swift */; };
 		4FEDCBD62AC2E0CB00C3BEC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDCBD52AC2E0CB00C3BEC2 /* Assets.xcassets */; };
@@ -51,6 +52,7 @@
 		4FACA6762AC37F120090A8B1 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		4FACA6782AC381A10090A8B1 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		4FACA67A2AC471060090A8B1 /* LabelsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsList.swift; sourceTree = "<group>"; };
+		4FACA67C2AC574FD0090A8B1 /* GeneralButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralButton.swift; sourceTree = "<group>"; };
 		4FEDCBCE2AC2E0C900C3BEC2 /* Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEDCBD12AC2E0C900C3BEC2 /* HotelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelApp.swift; sourceTree = "<group>"; };
 		4FEDCBD32AC2E0C900C3BEC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -227,6 +229,7 @@
 				4FACA6742AC37F000090A8B1 /* RoundedCorners.swift */,
 				4FACA6782AC381A10090A8B1 /* Labels.swift */,
 				4FACA67A2AC471060090A8B1 /* LabelsList.swift */,
+				4FACA67C2AC574FD0090A8B1 /* GeneralButton.swift */,
 			);
 			path = "Shared Views";
 			sourceTree = "<group>";
@@ -325,6 +328,7 @@
 				4FACA6712AC379660090A8B1 /* Double+Formatter.swift in Sources */,
 				4FEDCC002AC2E49400C3BEC2 /* Text+Font.swift in Sources */,
 				4FACA6792AC381A10090A8B1 /* Labels.swift in Sources */,
+				4FACA67D2AC574FD0090A8B1 /* GeneralButton.swift in Sources */,
 				4FACA67B2AC471060090A8B1 /* LabelsList.swift in Sources */,
 				4FACA66F2AC372880090A8B1 /* RatingView.swift in Sources */,
 				4FEDCC1B2AC2EEDD00C3BEC2 /* PhotoCarouselView.swift in Sources */,

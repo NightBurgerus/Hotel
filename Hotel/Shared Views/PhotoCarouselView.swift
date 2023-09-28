@@ -18,7 +18,7 @@ struct PhotoCarouselView: View {
                     photos[index]
                         .resizable()
                         .cornerRadius(15)
-//                        .frame(width: 343)
+                        .frame(width: UIScreen.main.bounds.width - 32)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))

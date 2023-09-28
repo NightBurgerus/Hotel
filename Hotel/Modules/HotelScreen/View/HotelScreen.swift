@@ -9,14 +9,19 @@ import SwiftUI
 
 struct HotelScreen: View {
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                mainBlock.padding(.bottom, 8)
-                aboutBlock
-                Spacer()
+        ZStack {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 0) {
+                    mainBlock.padding(.bottom, 8)
+                    aboutBlock.padding(.bottom, 12)
+                    buttonSpacer
+                    Spacer()
+                }
             }
+            .background(R.Colors.lightGray)
+            button
         }
-        .background(R.Colors.gray)
+        .edgesIgnoringSafeArea(.bottom)
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .principal) {
@@ -68,13 +73,15 @@ private extension HotelScreen {
             VStack(spacing: 0) {
                 PhotoCarouselView()
                     .padding(.bottom, 16)
-                RatingView(rating: 5, ratingName: "Превосходно")
-                    .padding(.bottom, 8)
-                hotelNameView.padding(.bottom, 8)
-                hotelAddressView.padding(.bottom, 16)
-                hotelPriceView.padding(.bottom, 16)
+                Group {
+                    RatingView(rating: 5, ratingName: "Превосходно")
+                        .padding(.bottom, 8)
+                    hotelNameView.padding(.bottom, 8)
+                    hotelAddressView.padding(.bottom, 16)
+                    hotelPriceView.padding(.bottom, 16)
+                }.padding(.horizontal, 16)
             }
-            .padding(.horizontal, 16)
+            
         }
     }
 }
@@ -166,6 +173,25 @@ private extension HotelScreen {
                 detailsInfo
             }
             .padding(16)
+        }
+    }
+}
+
+// MARK: - Bottom button
+private extension HotelScreen {
+    var buttonSpacer: some View {
+        GeneralButton(text: R.Strings.Hotel.toApartmentChoose)
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 28, trailing: 16))
+            .overlay(R.Colors.lightGray)
+    }
+    var button: some View {
+        VStack {
+            Spacer()
+                
+            GeneralButton(text: R.Strings.Hotel.toApartmentChoose)
+                .padding(EdgeInsets(top: 12, leading: 16, bottom: 28, trailing: 16))
+                .background(Color.white)
+                .border(Color.black)
         }
     }
 }
