@@ -55,5 +55,7 @@ struct R {
         static let lightGray    = Color("lightGray")
         /// red: 44, green: 48, blue: 53, alpha: 1
         static let darkGray     = Color("darkGray")
+        /// red: 0.91, green: 0.91, blue: 0.93, alpha: 1
+        static let gray232      = Color("gray232")
     }
 }

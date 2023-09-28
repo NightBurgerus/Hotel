@@ -9,9 +9,10 @@ import SwiftUI
 
 struct GeneralButton: View {
     let text: String
+    let action: () -> () = {}
     var body: some View {
         Button {
-            print("~ general button tap")
+            action()
         } label: {
             ZStack {
                 RoundedRectangle(cornerRadius: 15).fill(R.Colors.blue)

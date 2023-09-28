@@ -191,7 +191,7 @@ private extension HotelScreen {
             GeneralButton(text: R.Strings.Hotel.toApartmentChoose)
                 .padding(EdgeInsets(top: 12, leading: 16, bottom: 28, trailing: 16))
                 .background(Color.white)
-                .border(Color.black)
+                .border(R.Colors.gray232)
         }
     }
 }
