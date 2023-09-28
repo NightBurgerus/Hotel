@@ -42,6 +42,7 @@ struct R {
         
         static let StarImage = Image("star")
         static let ArrowRightImage = Image("rightArrow")
+        static let ArrowLeftImage  = Image("leftArrow")
         static let HappyEmoji = Image("happyEmoji")
         static let TickSquare = Image("tickSquare")
         static let CloseSquare = Image("closeSquare")

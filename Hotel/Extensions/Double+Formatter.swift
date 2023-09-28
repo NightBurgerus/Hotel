@@ -9,9 +9,9 @@ import Foundation
 
 extension Double {
     var formatted: String {
-        if self == Double(Int(self)) {
-            return "\(Int(self))"
-        }
-        return String(format: "%.1f", self)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.groupingSeparator = " "
+        return formatter.string(for: self)!
     }
 }
