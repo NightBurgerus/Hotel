@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct BookingScreen: View {
+    @State private var touristes: [Tourist] = [Tourist()]
+    @State private var phone = ""
+    @State private var email = ""
     var body: some View {
         ScrollView {
             VStack(spacing: 0) {
                 nameBlock.padding(.top, 8)
                 bookingBlock.padding(.top, 8)
                 buyerBlock.padding(.top, 8)
+                touristesBlock
             }
         }
         .background(R.Colors.gray)
@@ -119,8 +123,8 @@ private extension BookingScreen {
             VStack(spacing: 0) {
                 buyerInfoLabel.padding(.bottom, 20)
                 VStack(spacing: 8) {
-                    PhoneTextField(phone: .constant(""))
-                    GeneralTextField(title: "Почта", placeholder: "examplemail.000@mail.ru", text: .constant(""))
+                    PhoneTextField(phone: $phone)
+                    GeneralTextField(title: "Почта", placeholder: "Почта", text: $email)
                 }.padding(.bottom, 8)
                 
                 dataDontTransferLabel
@@ -130,7 +134,102 @@ private extension BookingScreen {
     }
 }
 
-
+// MARK: - Touristes Block
+private extension BookingScreen {
+    struct Tourist: Identifiable {
+        let id = UUID()
+        var name: String
+        var lastName: String
+        var dateOfBirth: String
+        var citizenship: String
+        var number: String
+        var dateOfNumber: String
+        
+        init() {
+            name = ""
+            lastName = ""
+            dateOfBirth = ""
+            citizenship = ""
+            number = ""
+            dateOfNumber = ""
+        }
+    }
+    
+    struct TouristBlock: View {
+        let number: Int
+        @Binding var tourist: Tourist
+        @State private var isOpen = true
+        
+        var body: some View {
+            BlockView {
+                VStack {
+                    title
+                    
+                    if isOpen {
+                        GeneralTextField(title: "Имя", placeholder: "Имя", text: $tourist.name)
+                        GeneralTextField(title: "Фамилия", placeholder: "Фамилия", text: $tourist.lastName)
+                        GeneralTextField(title: "Дата рождения", placeholder: "Дата рождения", text: $tourist.dateOfBirth)
+                        GeneralTextField(title: "Гражданство", placeholder: "Гражданство", text: $tourist.citizenship)
+                        GeneralTextField(title: "Номер загранпаспорта", placeholder: "Номер загранпаспорта", text: $tourist.number)
+                        GeneralTextField(title: "Срок действия загранпаспорта", placeholder: "Срок действия загранпаспорта", text: $tourist.dateOfNumber)
+                    }
+                }
+                .padding(16)
+            }
+        }
+        
+        private var title: some View {
+            HStack {
+                Text(String.sequenceNumber(number) + " турист")
+                    .customFont(.sfProDisplay(.medium), ofSize: 22)
+                    .foregroundColor(.black)
+                Spacer()
+                ZStack {
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(R.Colors.blue.opacity(0.1))
+                    
+                    R.Images
+                        .ArrowRightImage
+                        .rotationEffect(.degrees(isOpen ? 90 : -90))
+                }
+                .frame(width: 32, height: 32)
+                .contentShape(Rectangle())
+                .onTapGesture {
+                    withAnimation {
+                        self.isOpen.toggle()
+                    }
+                }
+            }
+        }
+    }
+    
+    var addTourist: some View {
+        BlockView {
+            HStack {
+                Text("Добавить туриста")
+                    .customFont(.sfProDisplay(.medium), ofSize: 22)
+                    .foregroundColor(.black)
+                Spacer()
+                R.Images.AddButton
+                    .contentShape(Rectangle())
+                    .onTapGesture {
+                        touristes.append(Tourist())
+                    }
+            }
+            .padding(.vertical, 13)
+            .padding(.horizontal, 16)
+        }
+    }
+    
+    var touristesBlock: some View {
+        VStack(spacing: 0) {
+            ForEach(0..<touristes.count, id: \.self) { i in
+                TouristBlock(number: i + 1, tourist: $touristes[i]).padding(.top, 8)
+            }
+            addTourist.padding(.top, 8)
+        }
+    }
+}
 
 struct ApartmentScreenPreview: PreviewProvider {
     static var previews: some View {

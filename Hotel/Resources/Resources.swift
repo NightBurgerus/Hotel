@@ -65,6 +65,7 @@ struct R {
         static let HappyEmoji = Image("happyEmoji")
         static let TickSquare = Image("tickSquare")
         static let CloseSquare = Image("closeSquare")
+        static let AddButton = Image("addButton")
     }
     
     struct Colors {

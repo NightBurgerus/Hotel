@@ -14,7 +14,7 @@ struct PhoteTextFieldBridge: UIViewControllerRepresentable {
     var placeholder: String = ""
     
     func makeUIViewController(context: Context) -> PhoneTextFieldController {
-        return PhoneTextFieldController(text: $text, firstResponder: $isFirstResponder)
+        return PhoneTextFieldController(firstResponder: $isFirstResponder, placeholder: placeholder, onTextChange: { text = $0 })
     }
     
     func updateUIViewController(_ uiViewController: PhoneTextFieldController, context: Context) {
@@ -23,12 +23,13 @@ struct PhoteTextFieldBridge: UIViewControllerRepresentable {
 
 struct TextFieldBridge: UIViewControllerRepresentable {
     typealias UIViewControllerType = TextFieldController
-    @Binding var text: String
+    var currentText: String
     @Binding var isFirstResponder: Bool
     var placeholder: String = ""
+    var onTextChange: (String) -> ()
     
     func makeUIViewController(context: Context) -> TextFieldController {
-        return TextFieldController(text: $text, firstResponder: $isFirstResponder, placeholder: placeholder)
+        return TextFieldController(currentText: currentText, firstResponder: $isFirstResponder, placeholder: placeholder, onTextChange: onTextChange)
     }
     
     func updateUIViewController(_ uiViewController: TextFieldController, context: Context) {
@@ -37,15 +38,16 @@ struct TextFieldBridge: UIViewControllerRepresentable {
 
 class TextFieldController: UIViewController, UITextFieldDelegate {
     @Binding private var firstResponder: Bool
-    @Binding private var text: String
     private let textField = UITextField()
     private var currentText = ""
     private var placeholder = ""
+    private var onTextChange: (String) -> ()
     
-    init(text: Binding<String>, firstResponder: Binding<Bool>, placeholder: String) {
+    init(currentText: String, firstResponder: Binding<Bool>, placeholder: String, onTextChange: @escaping(String) -> ()) {
         self._firstResponder = firstResponder
-        self._text = text
         self.placeholder = placeholder
+        self.onTextChange = onTextChange
+        self.currentText = currentText
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -61,6 +63,7 @@ class TextFieldController: UIViewController, UITextFieldDelegate {
     
     fileprivate func configureView() {
         textField.delegate = self
+        textField.text = currentText
         configureType()
         textField.placeholder = placeholder
         textField.textColor = UIColor(R.Colors.lightBlack)
@@ -80,6 +83,10 @@ class TextFieldController: UIViewController, UITextFieldDelegate {
         textField.keyboardType = .numberPad
     }
     
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        onTextChange(textField.text ?? "")
+    }
+    
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         return true
@@ -97,15 +104,17 @@ class TextFieldController: UIViewController, UITextFieldDelegate {
 
 final class PhoneTextFieldController: TextFieldController {
     @Binding var firstResponder: Bool
-    @Binding var text: String
     private let textField = UITextField()
     private var phoneMask = "+7 (***) ***-**-**"
     private var currentPhone = ""
+    private var placeholder = ""
+    private var onTextChange: (String) -> ()
     
-    init(text: Binding<String>, firstResponder: Binding<Bool>) {
+    init(firstResponder: Binding<Bool>, placeholder: String, onTextChange: @escaping(String) -> ()) {
         self._firstResponder = firstResponder
-        self._text = text
-        super.init(text: text, firstResponder: firstResponder, placeholder: phoneMask)
+        self.placeholder = placeholder
+        self.onTextChange = onTextChange
+        super.init(currentText: "", firstResponder: firstResponder, placeholder: phoneMask, onTextChange: onTextChange)
     }
     
     required init?(coder: NSCoder) {
@@ -121,7 +130,7 @@ final class PhoneTextFieldController: TextFieldController {
     override func configureView() {
         textField.delegate = self
         configureType()
-        textField.placeholder = phoneMask
+        textField.placeholder = placeholder
         textField.textColor = UIColor(R.Colors.lightBlack)
         view.addSubview(textField)
 
@@ -145,7 +154,7 @@ final class PhoneTextFieldController: TextFieldController {
             phoneMask.replaceSubrange(index...index, with: "*")
             currentPhone.removeLast()
             textField.text = phoneMask
-            text = phoneMask
+            onTextChange(textField.text ?? "")
             return false
         }
         if currentPhone.count < 10 && !string.isEmpty {
@@ -153,9 +162,20 @@ final class PhoneTextFieldController: TextFieldController {
             guard let index = phoneMask.firstIndex(of: "*") else { return false }
             phoneMask.replaceSubrange(index...index, with: string)
             textField.text = phoneMask
-            text = phoneMask
+            onTextChange(textField.text ?? "")
         }
         return false
     }
-
+    
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        super.textFieldDidBeginEditing(textField)
+        textField.text = phoneMask
+    }
+    
+    override func textFieldDidEndEditing(_ textField: UITextField) {
+        super.textFieldDidEndEditing(textField)
+        if currentPhone.isEmpty {
+            textField.text = ""
+        }
+    }
 }

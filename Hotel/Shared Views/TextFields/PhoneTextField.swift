@@ -7,21 +7,25 @@
 
 import SwiftUI
 
+// TODO: посмотреть, почему текст не меняется
 struct PhoneTextField: View {
     @Binding var phone: String
     @State private var isFirstResponder = false
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Номер телефона")
-                .customFont(.sfProDisplay(.regular), ofSize: 12)
-                .kerning(0.12)
-                .foregroundColor(R.Colors.gray066)
-            PhoteTextFieldBridge(text: $phone, isFirstResponder: $isFirstResponder)
+            if phone.count - phone.replacingOccurrences(of: "*", with: "").count != 10 && isFirstResponder {
+                Text("Номер телефона")
+                    .customFont(.sfProDisplay(.regular), ofSize: 12)
+                    .kerning(0.12)
+                    .foregroundColor(R.Colors.gray066)
+            }
+            PhoteTextFieldBridge(text: $phone, isFirstResponder: $isFirstResponder, placeholder: "Номер телефона")
                 .foregroundColor(.red)
                 .frame(height: 18)
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
+        .frame(height: 52)
         .background(
             RoundedRectangle(cornerRadius: 10)
                 .fill(R.Colors.gray096)
