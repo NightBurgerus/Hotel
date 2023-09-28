@@ -21,7 +21,11 @@ struct GeneralLabel: View {
 struct LinkedLabel: View {
     @State private var size: CGSize? = nil
     let text: String
+    var action: () -> () = {}
     var body: some View {
+        Button {
+            action()
+        } label: {
             Text(text)
                 .sfProDisplayFont(ofWeight: 500, size: 16)
                 .foregroundColor(R.Colors.blue)
@@ -40,7 +44,6 @@ struct LinkedLabel: View {
                     }.padding(.trailing, -17 - 2 - 10)
                 )
                 .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 47))
-                
-        
+        }
     }
 }

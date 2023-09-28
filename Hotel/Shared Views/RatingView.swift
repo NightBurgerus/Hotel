@@ -27,7 +27,7 @@ struct RatingView: View {
                 R.Images.StarImage
                     .frame(width: 15, height: 15)
                 Text("\(rating.formatted) \(ratingName)")
-                    .sfProDisplayFont(ofWeight: 500, size: 16)
+                    .customFont(.sfProDisplay(.medium), ofSize: 16)
                     .foregroundColor(R.Colors.orange)
             }
             .padding(EdgeInsets(top: 5, leading: 10, bottom: 5, trailing: 10))

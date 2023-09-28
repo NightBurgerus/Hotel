@@ -29,6 +29,12 @@ struct R {
             
             static let toApartmentChoose = "К выбору номера"
         }
+        
+        struct ApartmentsList {
+            private init() {}
+            
+            static let moreInfo = "Подробнее о номере"
+        }
     }
     
     struct Images {
@@ -44,7 +50,7 @@ struct R {
     struct Colors {
         private init() {}
         /// red: 255,  green: 168, blue: 0, alpha 1
-        static let orange       = Color("orange")
+        static let orange       = Color("Orange")
         /// red: 255, green: 199, blue: 0, alpha: 0.2
         static let lightOrange  = Color("lightOrange")
         /// red: 13, green: 144, blue: 255, alpha: 1

@@ -15,6 +15,8 @@
 		4FACA6792AC381A10090A8B1 /* Labels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA6782AC381A10090A8B1 /* Labels.swift */; };
 		4FACA67B2AC471060090A8B1 /* LabelsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA67A2AC471060090A8B1 /* LabelsList.swift */; };
 		4FACA67D2AC574FD0090A8B1 /* GeneralButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA67C2AC574FD0090A8B1 /* GeneralButton.swift */; };
+		4FACA6812AC59C150090A8B1 /* ApartmentsListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA6802AC59C150090A8B1 /* ApartmentsListScreen.swift */; };
+		4FACA6832AC59FB80090A8B1 /* TODOlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA6822AC59FB80090A8B1 /* TODOlist.swift */; };
 		4FEDCBD22AC2E0C900C3BEC2 /* HotelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDCBD12AC2E0C900C3BEC2 /* HotelApp.swift */; };
 		4FEDCBD42AC2E0C900C3BEC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDCBD32AC2E0C900C3BEC2 /* ContentView.swift */; };
 		4FEDCBD62AC2E0CB00C3BEC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDCBD52AC2E0CB00C3BEC2 /* Assets.xcassets */; };
@@ -53,6 +55,8 @@
 		4FACA6782AC381A10090A8B1 /* Labels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Labels.swift; sourceTree = "<group>"; };
 		4FACA67A2AC471060090A8B1 /* LabelsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsList.swift; sourceTree = "<group>"; };
 		4FACA67C2AC574FD0090A8B1 /* GeneralButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralButton.swift; sourceTree = "<group>"; };
+		4FACA6802AC59C150090A8B1 /* ApartmentsListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentsListScreen.swift; sourceTree = "<group>"; };
+		4FACA6822AC59FB80090A8B1 /* TODOlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOlist.swift; sourceTree = "<group>"; };
 		4FEDCBCE2AC2E0C900C3BEC2 /* Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEDCBD12AC2E0C900C3BEC2 /* HotelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelApp.swift; sourceTree = "<group>"; };
 		4FEDCBD32AC2E0C900C3BEC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +99,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FACA67E2AC59C000090A8B1 /* ApartmetsListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4FACA67F2AC59C090090A8B1 /* View */,
+			);
+			path = ApartmetsListScreen;
+			sourceTree = "<group>";
+		};
+		4FACA67F2AC59C090090A8B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4FACA6802AC59C150090A8B1 /* ApartmentsListScreen.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4FEDCBC52AC2E0C900C3BEC2 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +142,7 @@
 				4FEDCBDF2AC2E26200C3BEC2 /* Modules */,
 				4FEDCBD32AC2E0C900C3BEC2 /* ContentView.swift */,
 				4FEDCBD72AC2E0CB00C3BEC2 /* Preview Content */,
+				4FACA6822AC59FB80090A8B1 /* TODOlist.swift */,
 			);
 			path = Hotel;
 			sourceTree = "<group>";
@@ -137,6 +158,7 @@
 		4FEDCBDF2AC2E26200C3BEC2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4FACA67E2AC59C000090A8B1 /* ApartmetsListScreen */,
 				4FEDCBE02AC2E26500C3BEC2 /* HotelScreen */,
 			);
 			path = Modules;
@@ -325,12 +347,14 @@
 				4FACA6752AC37F000090A8B1 /* RoundedCorners.swift in Sources */,
 				4FEDCBE32AC2E27700C3BEC2 /* HotelScreen.swift in Sources */,
 				4FEDCC152AC2EBC400C3BEC2 /* SFProDisplayFontsEnum.swift in Sources */,
+				4FACA6832AC59FB80090A8B1 /* TODOlist.swift in Sources */,
 				4FACA6712AC379660090A8B1 /* Double+Formatter.swift in Sources */,
 				4FEDCC002AC2E49400C3BEC2 /* Text+Font.swift in Sources */,
 				4FACA6792AC381A10090A8B1 /* Labels.swift in Sources */,
 				4FACA67D2AC574FD0090A8B1 /* GeneralButton.swift in Sources */,
 				4FACA67B2AC471060090A8B1 /* LabelsList.swift in Sources */,
 				4FACA66F2AC372880090A8B1 /* RatingView.swift in Sources */,
+				4FACA6812AC59C150090A8B1 /* ApartmentsListScreen.swift in Sources */,
 				4FEDCC1B2AC2EEDD00C3BEC2 /* PhotoCarouselView.swift in Sources */,
 				4FACA6732AC37D7F0090A8B1 /* BlockView.swift in Sources */,
 				4FEDCBE62AC2E2E800C3BEC2 /* Resources.swift in Sources */,
