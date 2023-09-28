@@ -18,11 +18,10 @@ struct PhotoCarouselView: View {
                     photos[index]
                         .resizable()
                         .cornerRadius(15)
-                        .frame(width: 343)
+//                        .frame(width: 343)
                 }
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
-            .padding(.horizontal, 16)
             tabSelection()
         }
         .frame(height: 257)
