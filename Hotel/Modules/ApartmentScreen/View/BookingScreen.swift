@@ -12,16 +12,22 @@ struct BookingScreen: View {
     @State private var phone = ""
     @State private var email = ""
     var body: some View {
-        ScrollView {
-            VStack(spacing: 0) {
-                nameBlock.padding(.top, 8)
-                bookingBlock.padding(.top, 8)
-                buyerBlock.padding(.top, 8)
-                touristesBlock
-                totalBlock.padding(.top, 8)
+        ZStack {
+            ScrollView(showsIndicators: false) {
+                VStack(spacing: 0) {
+                    nameBlock.padding(.top, 8)
+                    bookingBlock.padding(.top, 8)
+                    buyerBlock.padding(.top, 8)
+                    touristesBlock
+                    totalBlock.padding(.top, 8)
+                    buttonSpacer.padding(.top, 10)
+                }
             }
+            .background(R.Colors.gray096)
+            
+            button
         }
-        .background(R.Colors.gray)
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 
@@ -69,6 +75,7 @@ private extension BookingScreen {
 
 // MARK: - Booking Info
 private extension BookingScreen {
+    
     var data: [(row: String, data: String)] {
         [
             ("Вылет из", "Санкт-Петербург"),
@@ -125,7 +132,7 @@ private extension BookingScreen {
                 buyerInfoLabel.padding(.bottom, 20)
                 VStack(spacing: 8) {
                     PhoneTextField(phone: $phone)
-                    GeneralTextField(title: "Почта", placeholder: "Почта", text: $email)
+                    GeneralTextField(title: R.Strings.Booking.email, placeholder: R.Strings.Booking.email, text: $email)
                 }.padding(.bottom, 8)
                 
                 dataDontTransferLabel
@@ -167,12 +174,12 @@ private extension BookingScreen {
                     title
                     
                     if isOpen {
-                        GeneralTextField(title: "Имя", placeholder: "Имя", text: $tourist.name)
-                        GeneralTextField(title: "Фамилия", placeholder: "Фамилия", text: $tourist.lastName)
-                        GeneralTextField(title: "Дата рождения", placeholder: "Дата рождения", text: $tourist.dateOfBirth)
-                        GeneralTextField(title: "Гражданство", placeholder: "Гражданство", text: $tourist.citizenship)
-                        GeneralTextField(title: "Номер загранпаспорта", placeholder: "Номер загранпаспорта", text: $tourist.number)
-                        GeneralTextField(title: "Срок действия загранпаспорта", placeholder: "Срок действия загранпаспорта", text: $tourist.dateOfNumber)
+                        GeneralTextField(title: R.Strings.Booking.name, placeholder: R.Strings.Booking.name, text: $tourist.name)
+                        GeneralTextField(title: R.Strings.Booking.lastName, placeholder: R.Strings.Booking.lastName, text: $tourist.lastName)
+                        GeneralTextField(title: R.Strings.Booking.dateOfBirth, placeholder: R.Strings.Booking.dateOfBirth, text: $tourist.dateOfBirth)
+                        GeneralTextField(title: R.Strings.Booking.citizenship, placeholder: R.Strings.Booking.citizenship, text: $tourist.citizenship)
+                        GeneralTextField(title: R.Strings.Booking.passportNumber, placeholder: R.Strings.Booking.passportNumber, text: $tourist.number)
+                        GeneralTextField(title: R.Strings.Booking.dateOfPassport, placeholder: R.Strings.Booking.dateOfPassport, text: $tourist.dateOfNumber)
                     }
                 }
                 .padding(16)
@@ -207,7 +214,7 @@ private extension BookingScreen {
     var addTourist: some View {
         BlockView {
             HStack {
-                Text("Добавить туриста")
+                Text(R.Strings.Booking.addTourist)
                     .customFont(.sfProDisplay(.medium), ofSize: 22)
                     .foregroundColor(.black)
                 Spacer()
@@ -248,7 +255,7 @@ private extension BookingScreen {
     
     func totalPrice(_ price: Double) -> some View {
         HStack {
-            Text("К оплате")
+            Text(R.Strings.Booking.toPay)
                 .customFont(.sfProDisplay(.regular), ofSize: 16)
                 .foregroundColor(R.Colors.gray)
             Spacer()
@@ -260,12 +267,31 @@ private extension BookingScreen {
     var totalBlock: some View {
         BlockView {
             VStack(spacing: 16) {
-                totalRow("Тур", price: 186600)
-                totalRow("Топливный сбор", price: 9300)
-                totalRow("Сервисный сбор", price: 2136)
+                totalRow(R.Strings.Booking.tour, price: 186600)
+                totalRow(R.Strings.Booking.fuelCollection, price: 9300)
+                totalRow(R.Strings.Booking.serviceFee, price: 2136)
                 totalPrice(198036)
             }
             .padding(16)
+        }
+    }
+}
+
+// MARK: - Bottom Button
+private extension BookingScreen {
+    var buttonSpacer: some View {
+        GeneralButton(text: "\(R.Strings.Booking.pay) 198 036 ₽")
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 28, trailing: 16))
+            .overlay(R.Colors.gray096)
+    }
+    var button: some View {
+        VStack {
+            Spacer()
+                
+            GeneralButton(text: "\(R.Strings.Booking.pay) 198 036 ₽")
+                .padding(EdgeInsets(top: 12, leading: 16, bottom: 28, trailing: 16))
+                .background(Color.white)
+                .border(R.Colors.gray232)
         }
     }
 }

@@ -52,6 +52,24 @@ struct R {
             
             static let buyerInfo = "Информация о покупателе"
             static let dataDontTransfer = "Эти данные никому не передаются. После оплаты мы вышли чек на указанный вами номер и почту"
+            static let phoneNumber = "Номер телефона"
+            static let email = "Почта"
+            
+            static let name = "Имя"
+            static let lastName = "Фамилия"
+            static let dateOfBirth = "Дата рождения"
+            static let citizenship = "Гражданство"
+            static let passportNumber = "Номер загранпаспорта"
+            static let dateOfPassport = "Срок действия загранпаспорта"
+            
+            static let addTourist = "Добавить туриста"
+            
+            static let toPay = "К оплате"
+            static let tour = "Тур"
+            static let fuelCollection = "Топливный сбор"
+            static let serviceFee = "Сервисный сбор"
+            
+            static let pay = "Оплатить"
             
         }
     }

@@ -14,12 +14,12 @@ struct PhoneTextField: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if phone.count - phone.replacingOccurrences(of: "*", with: "").count != 10 && isFirstResponder {
-                Text("Номер телефона")
+                Text(R.Strings.Booking.phoneNumber)
                     .customFont(.sfProDisplay(.regular), ofSize: 12)
                     .kerning(0.12)
                     .foregroundColor(R.Colors.gray066)
             }
-            PhoteTextFieldBridge(text: $phone, isFirstResponder: $isFirstResponder, placeholder: "Номер телефона")
+            PhoteTextFieldBridge(text: $phone, isFirstResponder: $isFirstResponder, placeholder: R.Strings.Booking.phoneNumber)
                 .foregroundColor(.red)
                 .frame(height: 18)
         }
