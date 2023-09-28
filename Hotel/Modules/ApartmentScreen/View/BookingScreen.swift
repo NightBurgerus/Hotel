@@ -28,6 +28,26 @@ struct BookingScreen: View {
             button
         }
         .edgesIgnoringSafeArea(.bottom)
+        .navigationBarTitleDisplayMode(.inline)
+        .contentShape(Rectangle())
+        .onTapGesture {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+        }
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    print("~ tap")
+                } label: {
+                    R.Images.ArrowLeftImage
+                }
+            }
+            
+            ToolbarItem(placement: .principal) {
+                Text(R.Strings.Booking.title)
+                    .customFont(.sfProDisplay(.medium), ofSize: 18)
+                    .foregroundColor(Color.black)
+            }
+        }
     }
 }
 
@@ -176,10 +196,13 @@ private extension BookingScreen {
                     if isOpen {
                         GeneralTextField(title: R.Strings.Booking.name, placeholder: R.Strings.Booking.name, text: $tourist.name)
                         GeneralTextField(title: R.Strings.Booking.lastName, placeholder: R.Strings.Booking.lastName, text: $tourist.lastName)
-                        GeneralTextField(title: R.Strings.Booking.dateOfBirth, placeholder: R.Strings.Booking.dateOfBirth, text: $tourist.dateOfBirth)
+                        
+                        DateTextField(title: R.Strings.Booking.dateOfBirth, placeholder: R.Strings.Booking.dateOfBirth, text: $tourist.dateOfBirth)
+                        
                         GeneralTextField(title: R.Strings.Booking.citizenship, placeholder: R.Strings.Booking.citizenship, text: $tourist.citizenship)
                         GeneralTextField(title: R.Strings.Booking.passportNumber, placeholder: R.Strings.Booking.passportNumber, text: $tourist.number)
-                        GeneralTextField(title: R.Strings.Booking.dateOfPassport, placeholder: R.Strings.Booking.dateOfPassport, text: $tourist.dateOfNumber)
+                        
+                        DateTextField(title: R.Strings.Booking.dateOfPassport, placeholder: R.Strings.Booking.dateOfPassport, text: $tourist.dateOfNumber)
                     }
                 }
                 .padding(16)

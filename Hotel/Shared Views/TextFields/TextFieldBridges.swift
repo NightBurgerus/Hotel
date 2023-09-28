@@ -7,7 +7,22 @@
 
 import SwiftUI
 
-struct PhoteTextFieldBridge: UIViewControllerRepresentable {
+struct DateTextFieldBridge: UIViewControllerRepresentable {
+    typealias UIViewControllerType = DateTextFieldController
+    var currentText: String
+    @Binding var isFirstResponder: Bool
+    var placeholder: String = ""
+    var onTextChange: (String) -> ()
+    
+    func makeUIViewController(context: Context) -> DateTextFieldController {
+        return DateTextFieldController(currentDate: currentText, firstResponder: $isFirstResponder, placeholder: placeholder, onTextChange: onTextChange)
+    }
+    
+    func updateUIViewController(_ uiViewController: DateTextFieldController, context: Context) {
+    }
+}
+
+struct PhoneTextFieldBridge: UIViewControllerRepresentable {
     typealias UIViewControllerType = PhoneTextFieldController
     @Binding var text: String
     @Binding var isFirstResponder: Bool
@@ -176,6 +191,87 @@ final class PhoneTextFieldController: TextFieldController {
         super.textFieldDidEndEditing(textField)
         if currentPhone.isEmpty {
             textField.text = ""
+        }
+    }
+}
+
+final class DateTextFieldController: TextFieldController {
+    @Binding var firstResponder: Bool
+    private let textField = UITextField()
+    private var dateMask = "__.__.____"
+    private var currentDate = ""
+    private var placeholder = ""
+    private var onTextChange: (String) -> ()
+    
+    init(currentDate: String, firstResponder: Binding<Bool>, placeholder: String, onTextChange: @escaping(String) -> ()) {
+        self._firstResponder = firstResponder
+        self.placeholder = placeholder
+        self.currentDate = currentDate
+        self.onTextChange = onTextChange
+        super.init(currentText: "", firstResponder: firstResponder, placeholder: dateMask, onTextChange: onTextChange)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureView()
+    }
+    
+    override func configureView() {
+        textField.delegate = self
+        textField.text = currentDate
+        configureType()
+        textField.placeholder = placeholder
+        textField.textColor = UIColor(R.Colors.lightBlack)
+        view.addSubview(textField)
+
+        
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            textField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            textField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            textField.topAnchor.constraint(equalTo: view.topAnchor),
+            textField.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    override func configureType() {
+        textField.tintColor = UIColor.clear
+    }
+    
+    override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if string.isEmpty && currentDate.count > 0 {
+            guard let index = dateMask.unicodeScalars.lastIndex(where: { char in CharacterSet.decimalDigits.contains(char) }) else { return false }
+            dateMask.replaceSubrange(index...index, with: "_")
+            currentDate.removeLast()
+            textField.text = dateMask
+            onTextChange(textField.text ?? "")
+            return false
+        }
+        if currentDate.count < 8 && !string.isEmpty {
+            currentDate.append(string)
+            guard let index = dateMask.firstIndex(of: "_") else { return false }
+            dateMask.replaceSubrange(index...index, with: string)
+            textField.text = dateMask
+            onTextChange(textField.text ?? "")
+        }
+        return false
+    }
+    
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        super.textFieldDidBeginEditing(textField)
+        textField.text = dateMask
+    }
+    
+    override func textFieldDidEndEditing(_ textField: UITextField) {
+        super.textFieldDidEndEditing(textField)
+        if currentDate.isEmpty {
+            textField.text = ""
+            onTextChange("")
         }
     }
 }
