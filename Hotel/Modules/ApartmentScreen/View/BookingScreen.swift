@@ -18,6 +18,7 @@ struct BookingScreen: View {
                 bookingBlock.padding(.top, 8)
                 buyerBlock.padding(.top, 8)
                 touristesBlock
+                totalBlock.padding(.top, 8)
             }
         }
         .background(R.Colors.gray)
@@ -227,6 +228,44 @@ private extension BookingScreen {
                 TouristBlock(number: i + 1, tourist: $touristes[i]).padding(.top, 8)
             }
             addTourist.padding(.top, 8)
+        }
+    }
+}
+
+// MARK: - Total Block
+private extension BookingScreen {
+    func totalRow(_ info: String, price: Double) -> some View {
+        HStack {
+            Text(info)
+                .customFont(.sfProDisplay(.regular), ofSize: 16)
+                .foregroundColor(R.Colors.gray)
+            Spacer()
+            Text("\(price.formatted) ₽")
+                .customFont(.sfProDisplay(.regular), ofSize: 16)
+                .foregroundColor(.black)
+        }
+    }
+    
+    func totalPrice(_ price: Double) -> some View {
+        HStack {
+            Text("К оплате")
+                .customFont(.sfProDisplay(.regular), ofSize: 16)
+                .foregroundColor(R.Colors.gray)
+            Spacer()
+            Text("\(price.formatted) ₽")
+                .customFont(.sfProDisplay(.semibold), ofSize: 16)
+                .foregroundColor(R.Colors.blue)
+        }
+    }
+    var totalBlock: some View {
+        BlockView {
+            VStack(spacing: 16) {
+                totalRow("Тур", price: 186600)
+                totalRow("Топливный сбор", price: 9300)
+                totalRow("Сервисный сбор", price: 2136)
+                totalPrice(198036)
+            }
+            .padding(16)
         }
     }
 }
