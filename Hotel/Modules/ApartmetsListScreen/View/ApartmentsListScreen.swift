@@ -30,7 +30,7 @@ struct ApartmensListScreen: View {
             }
             
             ToolbarItem(placement: .principal) {
-                Text("Steigenberger Makadi")
+                Text(R.Strings.ApartmentsList.title)
                     .customFont(.sfProDisplay(.medium), ofSize: 18)
                     .foregroundColor(Color.black)
             }
@@ -109,7 +109,7 @@ private extension ApartmentRow {
     }
     
     var button: some View {
-        GeneralButton(text: "Выбрать номер")
+        GeneralButton(text: R.Strings.ApartmentsList.chooseApartment)
             .frame(height: 48)
     }
 }

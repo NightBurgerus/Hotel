@@ -33,7 +33,9 @@ struct R {
         struct ApartmentsList {
             private init() {}
             
+            static let title = "Steigenberger Makadi"
             static let moreInfo = "Подробнее о номере"
+            static let chooseApartment = "Выбрать номер"
         }
     }
     
