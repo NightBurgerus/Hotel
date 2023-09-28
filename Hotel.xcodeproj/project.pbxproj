@@ -17,6 +17,7 @@
 		4FACA67D2AC574FD0090A8B1 /* GeneralButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA67C2AC574FD0090A8B1 /* GeneralButton.swift */; };
 		4FACA6812AC59C150090A8B1 /* ApartmentsListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA6802AC59C150090A8B1 /* ApartmentsListScreen.swift */; };
 		4FACA6832AC59FB80090A8B1 /* TODOlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA6822AC59FB80090A8B1 /* TODOlist.swift */; };
+		4FACA6872AC5AC9D0090A8B1 /* ApartmentScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA6862AC5AC9D0090A8B1 /* ApartmentScreen.swift */; };
 		4FEDCBD22AC2E0C900C3BEC2 /* HotelApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDCBD12AC2E0C900C3BEC2 /* HotelApp.swift */; };
 		4FEDCBD42AC2E0C900C3BEC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEDCBD32AC2E0C900C3BEC2 /* ContentView.swift */; };
 		4FEDCBD62AC2E0CB00C3BEC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEDCBD52AC2E0CB00C3BEC2 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		4FACA67C2AC574FD0090A8B1 /* GeneralButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralButton.swift; sourceTree = "<group>"; };
 		4FACA6802AC59C150090A8B1 /* ApartmentsListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentsListScreen.swift; sourceTree = "<group>"; };
 		4FACA6822AC59FB80090A8B1 /* TODOlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TODOlist.swift; sourceTree = "<group>"; };
+		4FACA6862AC5AC9D0090A8B1 /* ApartmentScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentScreen.swift; sourceTree = "<group>"; };
 		4FEDCBCE2AC2E0C900C3BEC2 /* Hotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEDCBD12AC2E0C900C3BEC2 /* HotelApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelApp.swift; sourceTree = "<group>"; };
 		4FEDCBD32AC2E0C900C3BEC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -115,6 +117,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		4FACA6842AC5AC8B0090A8B1 /* ApartmentScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4FACA6852AC5AC920090A8B1 /* View */,
+			);
+			path = ApartmentScreen;
+			sourceTree = "<group>";
+		};
+		4FACA6852AC5AC920090A8B1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4FACA6862AC5AC9D0090A8B1 /* ApartmentScreen.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4FEDCBC52AC2E0C900C3BEC2 = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +176,7 @@
 		4FEDCBDF2AC2E26200C3BEC2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				4FACA6842AC5AC8B0090A8B1 /* ApartmentScreen */,
 				4FACA67E2AC59C000090A8B1 /* ApartmetsListScreen */,
 				4FEDCBE02AC2E26500C3BEC2 /* HotelScreen */,
 			);
@@ -348,6 +367,7 @@
 				4FEDCBE32AC2E27700C3BEC2 /* HotelScreen.swift in Sources */,
 				4FEDCC152AC2EBC400C3BEC2 /* SFProDisplayFontsEnum.swift in Sources */,
 				4FACA6832AC59FB80090A8B1 /* TODOlist.swift in Sources */,
+				4FACA6872AC5AC9D0090A8B1 /* ApartmentScreen.swift in Sources */,
 				4FACA6712AC379660090A8B1 /* Double+Formatter.swift in Sources */,
 				4FEDCC002AC2E49400C3BEC2 /* Text+Font.swift in Sources */,
 				4FACA6792AC381A10090A8B1 /* Labels.swift in Sources */,
