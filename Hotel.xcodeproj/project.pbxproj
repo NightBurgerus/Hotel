@@ -66,6 +66,9 @@
 		4FF82FA22AC6F60A00E38198 /* ResponseResultEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FA12AC6F60A00E38198 /* ResponseResultEnum.swift */; };
 		4FF82FA52AC6F93500E38198 /* Links.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FA42AC6F93500E38198 /* Links.swift */; };
 		4FF82FA72AC6FB3300E38198 /* DetailsRowInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FA62AC6FB3300E38198 /* DetailsRowInfo.swift */; };
+		4FF82FAB2AC6FD2000E38198 /* ApartmentsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FAA2AC6FD2000E38198 /* ApartmentsListModel.swift */; };
+		4FF82FAD2AC6FE0600E38198 /* ApartmentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FAC2AC6FE0600E38198 /* ApartmentsListViewModel.swift */; };
+		4FF82FAF2AC6FF9600E38198 /* ApartmentRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FAE2AC6FF9600E38198 /* ApartmentRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -128,6 +131,9 @@
 		4FF82FA12AC6F60A00E38198 /* ResponseResultEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseResultEnum.swift; sourceTree = "<group>"; };
 		4FF82FA42AC6F93500E38198 /* Links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Links.swift; sourceTree = "<group>"; };
 		4FF82FA62AC6FB3300E38198 /* DetailsRowInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsRowInfo.swift; sourceTree = "<group>"; };
+		4FF82FAA2AC6FD2000E38198 /* ApartmentsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentsListModel.swift; sourceTree = "<group>"; };
+		4FF82FAC2AC6FE0600E38198 /* ApartmentsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentsListViewModel.swift; sourceTree = "<group>"; };
+		4FF82FAE2AC6FF9600E38198 /* ApartmentRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +195,8 @@
 		4FACA67E2AC59C000090A8B1 /* ApartmetsListScreen */ = {
 			isa = PBXGroup;
 			children = (
+				4FF82FA92AC6FD1600E38198 /* Model */,
+				4FF82FA82AC6FD1100E38198 /* ViewModel */,
 				4FACA67F2AC59C090090A8B1 /* View */,
 				4F1CE8E12AC6C803002089B8 /* ApartmentsListAssembly.swift */,
 			);
@@ -199,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				4FACA6802AC59C150090A8B1 /* ApartmentsListScreen.swift */,
+				4FF82FAE2AC6FF9600E38198 /* ApartmentRowView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -400,6 +409,22 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		4FF82FA82AC6FD1100E38198 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4FF82FAC2AC6FE0600E38198 /* ApartmentsListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4FF82FA92AC6FD1600E38198 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4FF82FAA2AC6FD2000E38198 /* ApartmentsListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -506,11 +531,13 @@
 				4FACA6832AC59FB80090A8B1 /* TODOlist.swift in Sources */,
 				4FACA6AE2AC5E05E0090A8B1 /* GeneralTextField.swift in Sources */,
 				4FACA6872AC5AC9D0090A8B1 /* BookingScreen.swift in Sources */,
+				4FF82FAB2AC6FD2000E38198 /* ApartmentsListModel.swift in Sources */,
 				4F1CE8DE2AC6C799002089B8 /* OrderPaidAssembly.swift in Sources */,
 				4FACA6712AC379660090A8B1 /* Double+Formatter.swift in Sources */,
 				4FEDCC002AC2E49400C3BEC2 /* Text+Font.swift in Sources */,
 				4FF82FA22AC6F60A00E38198 /* ResponseResultEnum.swift in Sources */,
 				4FACA6792AC381A10090A8B1 /* Labels.swift in Sources */,
+				4FF82FAF2AC6FF9600E38198 /* ApartmentRowView.swift in Sources */,
 				4FACA68A2AC5BEE10090A8B1 /* TextFieldBridges.swift in Sources */,
 				4FACA67D2AC574FD0090A8B1 /* GeneralButton.swift in Sources */,
 				4FACA6B02AC5F0070090A8B1 /* String+Numbers.swift in Sources */,
@@ -525,6 +552,7 @@
 				4FACA6732AC37D7F0090A8B1 /* BlockView.swift in Sources */,
 				4FF82FA02AC6F51500E38198 /* HotelRepository.swift in Sources */,
 				4F1CE8DC2AC6C3D1002089B8 /* OrderPaidScreen.swift in Sources */,
+				4FF82FAD2AC6FE0600E38198 /* ApartmentsListViewModel.swift in Sources */,
 				4FEDCBE62AC2E2E800C3BEC2 /* Resources.swift in Sources */,
 				4FEDCBD42AC2E0C900C3BEC2 /* ContentView.swift in Sources */,
 				4FF82FA52AC6F93500E38198 /* Links.swift in Sources */,

@@ -10,7 +10,7 @@ import Alamofire
 
 protocol HotelRepositoryProtocol {
     func getHotel(completion: @escaping(Response<Hotel>) -> ())
-    func getApartments()
+    func getApartments(completion: @escaping(Response<[Apartment]>) -> ())
     func getBookingInfo()
 }
 
@@ -26,8 +26,17 @@ final class HotelRepository: HotelRepositoryProtocol {
             completion(.success(response.value!))
         })
     }
-    func getApartments() {
+    func getApartments(completion: @escaping(Response<[Apartment]>) -> ()) {
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.keyDecodingStrategy = .convertFromSnakeCase
         
+        AF.request(Links.apartmentsList).responseDecodable(of: ApartmentResponse.self, decoder: jsonDecoder, completionHandler: { response in
+            if let error = response.error {
+                completion(.failure(error))
+                return
+            }
+            completion(.success(response.value!.rooms))
+        })
     }
     func getBookingInfo() {
         

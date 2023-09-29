@@ -9,7 +9,9 @@ import SwiftUI
 
 final class ApartmentsListAssembly {
     static func getModule() -> some View {
-        return ApartmensListScreen().navigationBarBackButtonHidden(true)
+        let repository = HotelRepository()
+        let viewModel = ApartmentsListViewModel(repository: repository)
+        return ApartmensListScreen(viewModel: viewModel).navigationBarBackButtonHidden(true)
     }
 }
 
