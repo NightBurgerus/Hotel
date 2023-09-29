@@ -72,6 +72,17 @@ struct R {
             static let pay = "Оплатить"
             
         }
+        
+        struct OrderPaid {
+            private init() {}
+            
+            static let title = "Заказ оплачен"
+            static let accepted = "Ваш заказ принят в работу"
+            static func confirmation(number: Int) -> String {
+                return "Подтверждение заказа №\(number) может занять некоторое время (от 1 часа до суток). Как только мы получим ответ от туроператора, вам на почту придет уведомление."
+            }
+            static let `super` = "Супер!"
+        }
     }
     
     struct Images {
@@ -84,6 +95,7 @@ struct R {
         static let TickSquare = Image("tickSquare")
         static let CloseSquare = Image("closeSquare")
         static let AddButton = Image("addButton")
+        static let PartyEmoji = Image("partyEmoji")
     }
     
     struct Colors {

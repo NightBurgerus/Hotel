@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4F1CE8DC2AC6C3D1002089B8 /* OrderPaidScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1CE8DB2AC6C3D1002089B8 /* OrderPaidScreen.swift */; };
 		4FACA66F2AC372880090A8B1 /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA66E2AC372880090A8B1 /* RatingView.swift */; };
 		4FACA6712AC379660090A8B1 /* Double+Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA6702AC379660090A8B1 /* Double+Formatter.swift */; };
 		4FACA6732AC37D7F0090A8B1 /* BlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FACA6722AC37D7F0090A8B1 /* BlockView.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4F1CE8DB2AC6C3D1002089B8 /* OrderPaidScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderPaidScreen.swift; sourceTree = "<group>"; };
 		4FACA66E2AC372880090A8B1 /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		4FACA6702AC379660090A8B1 /* Double+Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Formatter.swift"; sourceTree = "<group>"; };
 		4FACA6722AC37D7F0090A8B1 /* BlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockView.swift; sourceTree = "<group>"; };
@@ -111,6 +113,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F1CE8D92AC6C3AF002089B8 /* OrderPaidScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4F1CE8DA2AC6C3C8002089B8 /* View */,
+			);
+			path = OrderPaidScreen;
+			sourceTree = "<group>";
+		};
+		4F1CE8DA2AC6C3C8002089B8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				4F1CE8DB2AC6C3D1002089B8 /* OrderPaidScreen.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		4FACA67E2AC59C000090A8B1 /* ApartmetsListScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,12 +145,12 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		4FACA6842AC5AC8B0090A8B1 /* ApartmentScreen */ = {
+		4FACA6842AC5AC8B0090A8B1 /* BookingScreen */ = {
 			isa = PBXGroup;
 			children = (
 				4FACA6852AC5AC920090A8B1 /* View */,
 			);
-			path = ApartmentScreen;
+			path = BookingScreen;
 			sourceTree = "<group>";
 		};
 		4FACA6852AC5AC920090A8B1 /* View */ = {
@@ -197,7 +215,8 @@
 		4FEDCBDF2AC2E26200C3BEC2 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				4FACA6842AC5AC8B0090A8B1 /* ApartmentScreen */,
+				4F1CE8D92AC6C3AF002089B8 /* OrderPaidScreen */,
+				4FACA6842AC5AC8B0090A8B1 /* BookingScreen */,
 				4FACA67E2AC59C000090A8B1 /* ApartmetsListScreen */,
 				4FEDCBE02AC2E26500C3BEC2 /* HotelScreen */,
 			);
@@ -404,6 +423,7 @@
 				4FACA6812AC59C150090A8B1 /* ApartmentsListScreen.swift in Sources */,
 				4FEDCC1B2AC2EEDD00C3BEC2 /* PhotoCarouselView.swift in Sources */,
 				4FACA6732AC37D7F0090A8B1 /* BlockView.swift in Sources */,
+				4F1CE8DC2AC6C3D1002089B8 /* OrderPaidScreen.swift in Sources */,
 				4FEDCBE62AC2E2E800C3BEC2 /* Resources.swift in Sources */,
 				4FEDCBD42AC2E0C900C3BEC2 /* ContentView.swift in Sources */,
 				4FACA6772AC37F120090A8B1 /* View+Extensions.swift in Sources */,
