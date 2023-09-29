@@ -244,7 +244,9 @@ private extension BookingScreen {
                 R.Images.AddButton
                     .contentShape(Rectangle())
                     .onTapGesture {
-                        touristes.append(Tourist())
+                        withAnimation(.linear(duration: 0.2)) {
+                            self.touristes.append(Tourist())
+                        }
                     }
             }
             .padding(.vertical, 13)
