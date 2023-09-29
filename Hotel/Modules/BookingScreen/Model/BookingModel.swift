@@ -14,7 +14,7 @@ struct Booking: Decodable, Identifiable {
     let horating: Double
     let ratingName: String
     let departure: String
-    let arrtivalCountry: String
+    let arrivalCountry: String
     let tourDateStart: String
     let tourDateStop: String
     let numberOfNights: Int

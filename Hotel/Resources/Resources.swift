@@ -118,5 +118,7 @@ struct R {
         static let lightBlack   = Color("lightBlack")
         static let gray066      = Color("gray066")
         static let gray096      = Color("gray096")
+        
+        static let error        = Color("error")
     }
 }

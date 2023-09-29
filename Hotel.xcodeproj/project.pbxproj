@@ -74,6 +74,10 @@
 		4FF82FB82AC7023700E38198 /* TouristFieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FB72AC7023700E38198 /* TouristFieldModel.swift */; };
 		4FF82FBA2AC702AA00E38198 /* TouristModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FB92AC702AA00E38198 /* TouristModel.swift */; };
 		4FF82FBC2AC7049800E38198 /* TouristField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FBB2AC7049800E38198 /* TouristField.swift */; };
+		4FF82FBF2AC71CBF00E38198 /* MaskedTextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FBE2AC71CBF00E38198 /* MaskedTextFieldController.swift */; };
+		4FF82FC12AC71CD900E38198 /* TextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FC02AC71CD900E38198 /* TextFieldController.swift */; };
+		4FF82FC32AC721A700E38198 /* PassportTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FC22AC721A700E38198 /* PassportTextField.swift */; };
+		4FF82FC52AC74EEE00E38198 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FC42AC74EEE00E38198 /* Validator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +148,10 @@
 		4FF82FB72AC7023700E38198 /* TouristFieldModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristFieldModel.swift; sourceTree = "<group>"; };
 		4FF82FB92AC702AA00E38198 /* TouristModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristModel.swift; sourceTree = "<group>"; };
 		4FF82FBB2AC7049800E38198 /* TouristField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristField.swift; sourceTree = "<group>"; };
+		4FF82FBE2AC71CBF00E38198 /* MaskedTextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskedTextFieldController.swift; sourceTree = "<group>"; };
+		4FF82FC02AC71CD900E38198 /* TextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldController.swift; sourceTree = "<group>"; };
+		4FF82FC22AC721A700E38198 /* PassportTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportTextField.swift; sourceTree = "<group>"; };
+		4FF82FC42AC74EEE00E38198 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -245,10 +253,12 @@
 		4FACA6882AC5BED00090A8B1 /* TextFields */ = {
 			isa = PBXGroup;
 			children = (
+				4FF82FBD2AC71CB000E38198 /* Controllers */,
 				4FACA6892AC5BEE10090A8B1 /* TextFieldBridges.swift */,
 				4FACA6AB2AC5DC3D0090A8B1 /* PhoneTextField.swift */,
 				4FACA6AD2AC5E05E0090A8B1 /* GeneralTextField.swift */,
 				4FACA6B12AC5FAE00090A8B1 /* DateTextField.swift */,
+				4FF82FC22AC721A700E38198 /* PassportTextField.swift */,
 			);
 			path = TextFields;
 			sourceTree = "<group>";
@@ -385,6 +395,7 @@
 				4F1CE8E52AC6C885002089B8 /* Coordinator */,
 				4FEDCBD12AC2E0C900C3BEC2 /* HotelApp.swift */,
 				4FF82FA32AC6F92D00E38198 /* Network */,
+				4FF82FC42AC74EEE00E38198 /* Validator.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -454,6 +465,15 @@
 				4FF82FB92AC702AA00E38198 /* TouristModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		4FF82FBD2AC71CB000E38198 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4FF82FBE2AC71CBF00E38198 /* MaskedTextFieldController.swift */,
+				4FF82FC02AC71CD900E38198 /* TextFieldController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -554,12 +574,15 @@
 			files = (
 				4F1CE8EC2AC6CD5E002089B8 /* BackButton.swift in Sources */,
 				4FF82F972AC6F32400E38198 /* HotelModel.swift in Sources */,
+				4FF82FBF2AC71CBF00E38198 /* MaskedTextFieldController.swift in Sources */,
 				4FACA6752AC37F000090A8B1 /* RoundedCorners.swift in Sources */,
 				4F1CE8EA2AC6CC07002089B8 /* CoordinatorView.swift in Sources */,
 				4FACA6B22AC5FAE00090A8B1 /* DateTextField.swift in Sources */,
 				4FEDCBE32AC2E27700C3BEC2 /* HotelScreen.swift in Sources */,
+				4FF82FC32AC721A700E38198 /* PassportTextField.swift in Sources */,
 				4FF82FB82AC7023700E38198 /* TouristFieldModel.swift in Sources */,
 				4FEDCC152AC2EBC400C3BEC2 /* SFProDisplayFontsEnum.swift in Sources */,
+				4FF82FC12AC71CD900E38198 /* TextFieldController.swift in Sources */,
 				4FACA6832AC59FB80090A8B1 /* TODOlist.swift in Sources */,
 				4FACA6AE2AC5E05E0090A8B1 /* GeneralTextField.swift in Sources */,
 				4FACA6872AC5AC9D0090A8B1 /* BookingScreen.swift in Sources */,
@@ -574,6 +597,7 @@
 				4FF82FB32AC700F900E38198 /* BookingModel.swift in Sources */,
 				4FACA67D2AC574FD0090A8B1 /* GeneralButton.swift in Sources */,
 				4FACA6B02AC5F0070090A8B1 /* String+Numbers.swift in Sources */,
+				4FF82FC52AC74EEE00E38198 /* Validator.swift in Sources */,
 				4F1CE8E22AC6C803002089B8 /* ApartmentsListAssembly.swift in Sources */,
 				4FACA67B2AC471060090A8B1 /* LabelsList.swift in Sources */,
 				4FACA66F2AC372880090A8B1 /* RatingView.swift in Sources */,

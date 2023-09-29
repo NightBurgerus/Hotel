@@ -9,7 +9,9 @@ import SwiftUI
 
 final class BookingAssembly {
     static func getModule() -> some View {
-        return BookingScreen().navigationBarBackButtonHidden(true)
+        let repository = HotelRepository()
+        let viewModel = BookingViewModel(repository: repository)
+        return BookingScreen(viewModel: viewModel).navigationBarBackButtonHidden(true)
     }
 }
 

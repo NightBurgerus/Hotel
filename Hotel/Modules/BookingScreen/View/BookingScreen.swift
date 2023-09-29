@@ -9,11 +9,14 @@ import SwiftUI
 
 
 // TODO: Сделать шапку белой
-struct BookingScreen: View {
+struct BookingScreen<ViewModel>: View where ViewModel: BookingViewModelProtocol {
     @EnvironmentObject private var coordinator: Coordinator
+    @StateObject var viewModel: ViewModel
     @State private var touristes: [TouristFieldModel] = [TouristFieldModel(tourist: Tourist())]
     @State private var phone = ""
     @State private var email = ""
+    @State private var emailError = false
+    
     var body: some View {
         ZStack {
             ScrollView(showsIndicators: false) {
@@ -47,18 +50,21 @@ struct BookingScreen: View {
                     .foregroundColor(Color.black)
             }
         }
+        .onAppear {
+            viewModel.getInfo()
+        }
     }
 }
 
 // MARK: - Name Block
 private extension BookingScreen {
     var rating: some View {
-        RatingView(rating: 5, ratingName: "Превосходно")
+        RatingView(rating: viewModel.rating, ratingName: viewModel.ratingName)
     }
     
     var name: some View {
         HStack {
-            Text("Steigenberger Makadi")
+            Text(viewModel.hotelName)
                 .customFont(.sfProDisplay(.medium), ofSize: 22)
                 .foregroundColor(Color.black)
                 .multilineTextAlignment(.leading)
@@ -71,7 +77,7 @@ private extension BookingScreen {
             print("~ address")
         } label: {
             HStack {
-                Text("Madinat Makadi, Safaga Road, Makadi Bay, Египет")
+                Text(viewModel.hotelAddress)
                     .customFont(.sfProDisplay(.medium), ofSize: 14)
                     .foregroundColor(R.Colors.blue)
                     .multilineTextAlignment(.leading)
@@ -94,27 +100,15 @@ private extension BookingScreen {
 
 // MARK: - Booking Info
 private extension BookingScreen {
-    
-    var data: [(row: String, data: String)] {
-        [
-            ("Вылет из", "Санкт-Петербург"),
-            ("Страна, город", "Египет, Хургада"),
-            ("Даты", "19.09.2023 – 27.09.2023"),
-            ("Кол-во ночей", "7 ночей"),
-            ("Отель", "Steigenberger Makadi"),
-            ("Номер", "Стандартный с видом на бассейн или сад"),
-            ("Питание", "Все включено")
-        ]
-    }
     var bookingBlock: some View {
         BlockView {
             VStack {
                 LazyVGrid(columns: [GridItem(.fixed(130), alignment: .topLeading), GridItem(.flexible(), alignment: .topLeading)], spacing: 16) {
-                    ForEach(0..<data.count, id: \.self) { i in
-                        Text(data[i].row)
+                    ForEach(0..<viewModel.departmentInfo.count, id: \.self) { i in
+                        Text(viewModel.departmentInfo[i].row)
                             .customFont(.sfProDisplay(.regular), ofSize: 16)
                             .foregroundColor(R.Colors.gray)
-                        Text(data[i].data)
+                        Text(viewModel.departmentInfo[i].data)
                             .customFont(.sfProDisplay(.regular), ofSize: 16)
                             .foregroundColor(Color.black)
                     }
@@ -150,8 +144,8 @@ private extension BookingScreen {
             VStack(spacing: 0) {
                 buyerInfoLabel.padding(.bottom, 20)
                 VStack(spacing: 8) {
-                    PhoneTextField(phone: $phone)
-                    GeneralTextField(title: R.Strings.Booking.email, placeholder: R.Strings.Booking.email, text: $email)
+                    PhoneTextField(phone: $viewModel.phoneNumber, isFirstResponder: $viewModel.phoneIsFirstResponder, error: $viewModel.phoneError)
+                    GeneralTextField(title: R.Strings.Booking.email, placeholder: R.Strings.Booking.email, text: $viewModel.email, error: $viewModel.emailError, isFirstResponder: $viewModel.emailIsFirstResponder)
                 }.padding(.bottom, 8)
                 
                 dataDontTransferLabel
@@ -175,13 +169,14 @@ private extension BookingScreen {
                     title
                     
                     if isOpen {
-                        GeneralTextField(title: R.Strings.Booking.name, placeholder: R.Strings.Booking.name, text: $tourist.value.name)
-                        GeneralTextField(title: R.Strings.Booking.lastName, placeholder: R.Strings.Booking.lastName, text: $tourist.value.lastName)
+                        GeneralTextField(title: R.Strings.Booking.name, placeholder: R.Strings.Booking.name, text: $tourist.value.name, error: .constant(false), isFirstResponder: .constant(false))
+                        GeneralTextField(title: R.Strings.Booking.lastName, placeholder: R.Strings.Booking.lastName, text: $tourist.value.lastName, error: .constant(false), isFirstResponder: .constant(false))
                         
                         DateTextField(title: R.Strings.Booking.dateOfBirth, placeholder: R.Strings.Booking.dateOfBirth, text: $tourist.value.dateOfBirth)
                         
-                        GeneralTextField(title: R.Strings.Booking.citizenship, placeholder: R.Strings.Booking.citizenship, text: $tourist.value.citizenship)
-                        GeneralTextField(title: R.Strings.Booking.passportNumber, placeholder: R.Strings.Booking.passportNumber, text: $tourist.value.number)
+                        GeneralTextField(title: R.Strings.Booking.citizenship, placeholder: R.Strings.Booking.citizenship, text: $tourist.value.citizenship, error: .constant(false), isFirstResponder: .constant(false))
+                        
+                        PassportTextField(title: R.Strings.Booking.passportNumber, placeholder: R.Strings.Booking.passportNumber, text: $tourist.value.number)
                         
                         DateTextField(title: R.Strings.Booking.dateOfPassport, placeholder: R.Strings.Booking.dateOfPassport, text: $tourist.value.dateOfNumber)
                     }
@@ -307,13 +302,5 @@ private extension BookingScreen {
             print("~ error: ", tourist.hasAnyEmptyField)
         }
         coordinator.push(.orderPaid)
-    }
-}
-
-struct ApartmentScreenPreview: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            BookingScreen()
-        }
     }
 }

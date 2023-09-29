@@ -9,7 +9,8 @@ import SwiftUI
 
 struct PhoneTextField: View {
     @Binding var phone: String
-    @State private var isFirstResponder = false
+    @Binding var isFirstResponder: Bool
+    @Binding var error: Bool
     
     private var showTitle: Bool {
         if isFirstResponder {
@@ -29,7 +30,7 @@ struct PhoneTextField: View {
                     .kerning(0.12)
                     .foregroundColor(R.Colors.gray066)
             }
-            PhoneTextFieldBridge(text: $phone, isFirstResponder: $isFirstResponder, placeholder: R.Strings.Booking.phoneNumber)
+            PhoneTextFieldBridge(text: $phone, isFirstResponder: $isFirstResponder, placeholder: R.Strings.Booking.phoneNumber, onTextChange: { phone = $0 })
                 .foregroundColor(.red)
                 .frame(height: 18)
         }
@@ -38,7 +39,7 @@ struct PhoneTextField: View {
         .frame(height: 52)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(R.Colors.gray096)
+                .fill(error ? R.Colors.error : R.Colors.gray096)
                 .overlay(
                     Group {
                         if isFirstResponder {

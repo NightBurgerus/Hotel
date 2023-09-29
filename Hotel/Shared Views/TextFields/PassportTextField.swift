@@ -1,18 +1,17 @@
 //
-//  GeneralTextField.swift
+//  PassportTextField.swift
 //  Hotel
 //
-//  Created by Чебупелина on 28.09.2023.
+//  Created by Чебупелина on 29.09.2023.
 //
 
 import SwiftUI
 
-struct GeneralTextField: View {
+struct PassportTextField: View {
     var title: String
     var placeholder: String = ""
     @Binding var text: String
-    @Binding var error: Bool
-    @Binding var isFirstResponder: Bool
+    @State private var isFirstResponder: Bool = false
     var onTextChange: (String) -> () = { _ in }
     
     var body: some View {
@@ -24,7 +23,7 @@ struct GeneralTextField: View {
                     .kerning(0.12)
                     .foregroundColor(R.Colors.gray066)
             }
-            TextFieldBridge(currentText: text, isFirstResponder: $isFirstResponder, placeholder: placeholder, onTextChange: { text = $0 })
+            PassportTextFieldBridge(currentText: text, isFirstResponder: $isFirstResponder, placeholder: placeholder, onTextChange: { text = $0 })
                 .frame(height: 18)
         }
         .padding(.horizontal, 16)
@@ -32,7 +31,7 @@ struct GeneralTextField: View {
         .frame(height: 52)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(error ? R.Colors.error : R.Colors.gray096)
+                .fill(R.Colors.gray096)
                 .overlay(
                     Group {
                         if isFirstResponder {
