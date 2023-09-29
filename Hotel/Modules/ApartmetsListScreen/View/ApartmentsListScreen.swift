@@ -22,11 +22,7 @@ struct ApartmensListScreen: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    print("~ tap")
-                } label: {
-                    R.Images.ArrowLeftImage
-                }
+                BackButton()
             }
             
             ToolbarItem(placement: .principal) {
@@ -50,7 +46,9 @@ struct Apartment: Identifiable {
 
 // TODO: Вынести во View
 struct ApartmentRow: View {
+    @EnvironmentObject private var coordinator: Coordinator
     let apartment: Apartment
+    
     var body: some View {
         BlockView {
             VStack(spacing: 0) {
@@ -109,8 +107,10 @@ private extension ApartmentRow {
     }
     
     var button: some View {
-        GeneralButton(text: R.Strings.ApartmentsList.chooseApartment)
-            .frame(height: 48)
+        GeneralButton(text: R.Strings.ApartmentsList.chooseApartment, action: {
+            coordinator.push(.booking)
+        })
+        .frame(height: 48)
     }
 }
 

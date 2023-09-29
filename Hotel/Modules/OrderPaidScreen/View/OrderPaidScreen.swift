@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OrderPaidScreen: View {
+    @EnvironmentObject private var coordinator: Coordinator
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
@@ -36,11 +37,7 @@ struct OrderPaidScreen: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    print("~ tap")
-                } label: {
-                    R.Images.ArrowLeftImage
-                }
+                BackButton()
             }
             
             ToolbarItem(placement: .principal) {
@@ -55,10 +52,12 @@ struct OrderPaidScreen: View {
         VStack {
             Spacer()
                 
-            GeneralButton(text: R.Strings.OrderPaid.super)
-                .padding(EdgeInsets(top: 12, leading: 16, bottom: 28, trailing: 16))
-                .background(Color.white)
-                .border(R.Colors.gray232)
+            GeneralButton(text: R.Strings.OrderPaid.super, action: {
+                coordinator.popToRoot()
+            })
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 28, trailing: 16))
+            .background(Color.white)
+            .border(R.Colors.gray232)
         }
     }
 }

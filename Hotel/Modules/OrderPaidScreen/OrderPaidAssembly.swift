@@ -8,7 +8,7 @@
 import SwiftUI
 
 final class OrderPaidAssembly {
-    static func getModule() -> OrderPaidScreen {
-        return OrderPaidScreen()
+    static func getModule() -> some View {
+        return OrderPaidScreen().navigationBarBackButtonHidden(true)
     }
 }

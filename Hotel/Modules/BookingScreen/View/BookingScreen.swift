@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct BookingScreen: View {
+    @EnvironmentObject private var coordinator: Coordinator
     @State private var touristes: [Tourist] = [Tourist()]
     @State private var phone = ""
     @State private var email = ""
@@ -35,11 +36,7 @@ struct BookingScreen: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button {
-                    print("~ tap")
-                } label: {
-                    R.Images.ArrowLeftImage
-                }
+                BackButton()
             }
             
             ToolbarItem(placement: .principal) {
@@ -313,11 +310,15 @@ private extension BookingScreen {
         VStack {
             Spacer()
                 
-            GeneralButton(text: "\(R.Strings.Booking.pay) 198 036 ₽")
+            GeneralButton(text: "\(R.Strings.Booking.pay) 198 036 ₽", action: payButtonPressed)
                 .padding(EdgeInsets(top: 12, leading: 16, bottom: 28, trailing: 16))
                 .background(Color.white)
                 .border(R.Colors.gray232)
         }
+    }
+    
+    private func payButtonPressed() {
+        coordinator.push(.orderPaid)
     }
 }
 

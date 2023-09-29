@@ -8,8 +8,8 @@
 import SwiftUI
 
 final class HotelAssembly {
-    static func getModule() -> HotelScreen {
-        return HotelScreen()
+    static func getModule() -> some View {
+        return HotelScreen().navigationBarBackButtonHidden(true)
     }
 }
 

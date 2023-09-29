@@ -8,8 +8,8 @@
 import SwiftUI
 
 final class BookingAssembly {
-    static func getModule() -> BookingScreen {
-        return BookingScreen()
+    static func getModule() -> some View {
+        return BookingScreen().navigationBarBackButtonHidden(true)
     }
 }
 

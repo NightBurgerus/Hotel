@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct HotelScreen: View {
+    @EnvironmentObject private var coordinator: Coordinator
     var body: some View {
         ZStack {
             ScrollView(showsIndicators: false) {
@@ -188,10 +189,12 @@ private extension HotelScreen {
         VStack {
             Spacer()
                 
-            GeneralButton(text: R.Strings.Hotel.toApartmentChoose)
-                .padding(EdgeInsets(top: 12, leading: 16, bottom: 28, trailing: 16))
-                .background(Color.white)
-                .border(R.Colors.gray232)
+            GeneralButton(text: R.Strings.Hotel.toApartmentChoose, action: {
+                coordinator.push(.apartmentsList)
+            })
+            .padding(EdgeInsets(top: 12, leading: 16, bottom: 28, trailing: 16))
+            .background(Color.white)
+            .border(R.Colors.gray232)
         }
     }
 }

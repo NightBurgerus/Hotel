@@ -8,8 +8,8 @@
 import SwiftUI
 
 final class ApartmentsListAssembly {
-    static func getModule() -> ApartmentsListAssembly {
-        return ApartmentsListAssembly()
+    static func getModule() -> some View {
+        return ApartmensListScreen().navigationBarBackButtonHidden(true)
     }
 }
 
