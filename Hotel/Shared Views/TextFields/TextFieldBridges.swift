@@ -8,17 +8,18 @@
 import SwiftUI
 
 struct DateTextFieldBridge: UIViewControllerRepresentable {
-    typealias UIViewControllerType = DateTextFieldController
+    typealias UIViewControllerType = MaskedTextFieldController
     var currentText: String
     @Binding var isFirstResponder: Bool
     var placeholder: String = ""
     var onTextChange: (String) -> ()
     
-    func makeUIViewController(context: Context) -> DateTextFieldController {
-        return DateTextFieldController(currentDate: currentText, firstResponder: $isFirstResponder, placeholder: placeholder, onTextChange: onTextChange)
+    func makeUIViewController(context: Context) -> MaskedTextFieldController {
+//        return DateTextFieldController(currentDate: currentText, firstResponder: $isFirstResponder, placeholder: placeholder, onTextChange: onTextChange)
+        return MaskedTextFieldController(configuration: .date, currentText: currentText, firstResponder: $isFirstResponder, placeholder: placeholder, onTextChange: onTextChange)
     }
     
-    func updateUIViewController(_ uiViewController: DateTextFieldController, context: Context) {
+    func updateUIViewController(_ uiViewController: MaskedTextFieldController, context: Context) {
     }
 }
 
@@ -115,6 +116,103 @@ class TextFieldController: UIViewController, UITextFieldDelegate {
         self.firstResponder = false
     }
 
+}
+
+struct MaskedTFConfiguration {
+    let mask: String
+    let separator: String
+    let keyboardType: UIKeyboardType
+    let cursorIsHidden: Bool = false
+    var countSeparators: Int {
+        return mask.filter({ String($0) == separator }).count
+    }
+    
+    static let phone: MaskedTFConfiguration = {
+        return MaskedTFConfiguration(mask: "+7 (***) ***-**-**", separator: "*", keyboardType: .numberPad)
+    }()
+    
+    static let date: MaskedTFConfiguration = {
+        return MaskedTFConfiguration(mask: "__.__.____", separator: "_", keyboardType: .numberPad)
+    }()
+}
+
+final class MaskedTextFieldController: TextFieldController {
+    @Binding var firstResponder: Bool
+    private let textField = UITextField()
+    private var configuration: MaskedTFConfiguration
+    private var currentText = ""
+    private var placeholder = ""
+    private var onTextChange: (String) -> ()
+    
+    init(configuration: MaskedTFConfiguration, currentText: String, firstResponder: Binding<Bool>, placeholder: String, onTextChange: @escaping(String) -> ()) {
+        self._firstResponder = firstResponder
+        self.configuration = configuration
+        self.placeholder = placeholder
+        self.currentText = currentText
+        self.onTextChange = onTextChange
+        super.init(currentText: "", firstResponder: firstResponder, placeholder: placeholder, onTextChange: onTextChange)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureView()
+    }
+    
+    override func configureView() {
+        textField.delegate = self
+        textField.placeholder = placeholder
+        textField.textColor = UIColor(R.Colors.lightBlack)
+        if configuration.cursorIsHidden {
+            textField.tintColor = UIColor.clear
+        }
+        textField.keyboardType = configuration.keyboardType
+        currentText = configuration.mask
+        view.addSubview(textField)
+
+        
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            textField.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            textField.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            textField.topAnchor.constraint(equalTo: view.topAnchor),
+            textField.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
+    
+    override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if string.isEmpty && currentPhone.count > 0 {
+//            guard let index = phoneMask.unicodeScalars.lastIndex(where: { char in CharacterSet.decimalDigits.contains(char) }) else { return false }
+//            phoneMask.replaceSubrange(index...index, with: "*")
+//            currentPhone.removeLast()
+//            textField.text = phoneMask
+//            onTextChange(textField.text ?? "")
+//            return false
+//        }
+        if !string.isEmpty {
+            guard let index = currentText.firstIndex(where: { String($0) == configuration.separator}) else { return false }
+            currentText.replaceSubrange(index...index, with: string)
+            textField.text = currentText
+            onTextChange(textField.text ?? "")
+        }
+        return false
+    }
+    
+    override func textFieldDidBeginEditing(_ textField: UITextField) {
+        super.textFieldDidBeginEditing(textField)
+        textField.text = currentText
+    }
+    
+    override func textFieldDidEndEditing(_ textField: UITextField) {
+        super.textFieldDidEndEditing(textField)
+        if currentText.isEmpty {
+            textField.text = ""
+        }
+    }
 }
 
 final class PhoneTextFieldController: TextFieldController {

@@ -69,6 +69,11 @@
 		4FF82FAB2AC6FD2000E38198 /* ApartmentsListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FAA2AC6FD2000E38198 /* ApartmentsListModel.swift */; };
 		4FF82FAD2AC6FE0600E38198 /* ApartmentsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FAC2AC6FE0600E38198 /* ApartmentsListViewModel.swift */; };
 		4FF82FAF2AC6FF9600E38198 /* ApartmentRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FAE2AC6FF9600E38198 /* ApartmentRowView.swift */; };
+		4FF82FB32AC700F900E38198 /* BookingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FB22AC700F900E38198 /* BookingModel.swift */; };
+		4FF82FB62AC7013B00E38198 /* BookingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FB52AC7013B00E38198 /* BookingViewModel.swift */; };
+		4FF82FB82AC7023700E38198 /* TouristFieldModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FB72AC7023700E38198 /* TouristFieldModel.swift */; };
+		4FF82FBA2AC702AA00E38198 /* TouristModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FB92AC702AA00E38198 /* TouristModel.swift */; };
+		4FF82FBC2AC7049800E38198 /* TouristField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FBB2AC7049800E38198 /* TouristField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +139,11 @@
 		4FF82FAA2AC6FD2000E38198 /* ApartmentsListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentsListModel.swift; sourceTree = "<group>"; };
 		4FF82FAC2AC6FE0600E38198 /* ApartmentsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentsListViewModel.swift; sourceTree = "<group>"; };
 		4FF82FAE2AC6FF9600E38198 /* ApartmentRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentRowView.swift; sourceTree = "<group>"; };
+		4FF82FB22AC700F900E38198 /* BookingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingModel.swift; sourceTree = "<group>"; };
+		4FF82FB52AC7013B00E38198 /* BookingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewModel.swift; sourceTree = "<group>"; };
+		4FF82FB72AC7023700E38198 /* TouristFieldModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristFieldModel.swift; sourceTree = "<group>"; };
+		4FF82FB92AC702AA00E38198 /* TouristModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristModel.swift; sourceTree = "<group>"; };
+		4FF82FBB2AC7049800E38198 /* TouristField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +225,8 @@
 		4FACA6842AC5AC8B0090A8B1 /* BookingScreen */ = {
 			isa = PBXGroup;
 			children = (
+				4FF82FB12AC700F200E38198 /* Model */,
+				4FF82FB02AC700EE00E38198 /* ViewModel */,
 				4FACA6852AC5AC920090A8B1 /* View */,
 				4F1CE8DF2AC6C7DD002089B8 /* BookingAssembly.swift */,
 			);
@@ -225,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				4FACA6862AC5AC9D0090A8B1 /* BookingScreen.swift */,
+				4FF82FBB2AC7049800E38198 /* TouristField.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -425,6 +438,24 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		4FF82FB02AC700EE00E38198 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4FF82FB52AC7013B00E38198 /* BookingViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4FF82FB12AC700F200E38198 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4FF82FB22AC700F900E38198 /* BookingModel.swift */,
+				4FF82FB72AC7023700E38198 /* TouristFieldModel.swift */,
+				4FF82FB92AC702AA00E38198 /* TouristModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -527,6 +558,7 @@
 				4F1CE8EA2AC6CC07002089B8 /* CoordinatorView.swift in Sources */,
 				4FACA6B22AC5FAE00090A8B1 /* DateTextField.swift in Sources */,
 				4FEDCBE32AC2E27700C3BEC2 /* HotelScreen.swift in Sources */,
+				4FF82FB82AC7023700E38198 /* TouristFieldModel.swift in Sources */,
 				4FEDCC152AC2EBC400C3BEC2 /* SFProDisplayFontsEnum.swift in Sources */,
 				4FACA6832AC59FB80090A8B1 /* TODOlist.swift in Sources */,
 				4FACA6AE2AC5E05E0090A8B1 /* GeneralTextField.swift in Sources */,
@@ -539,6 +571,7 @@
 				4FACA6792AC381A10090A8B1 /* Labels.swift in Sources */,
 				4FF82FAF2AC6FF9600E38198 /* ApartmentRowView.swift in Sources */,
 				4FACA68A2AC5BEE10090A8B1 /* TextFieldBridges.swift in Sources */,
+				4FF82FB32AC700F900E38198 /* BookingModel.swift in Sources */,
 				4FACA67D2AC574FD0090A8B1 /* GeneralButton.swift in Sources */,
 				4FACA6B02AC5F0070090A8B1 /* String+Numbers.swift in Sources */,
 				4F1CE8E22AC6C803002089B8 /* ApartmentsListAssembly.swift in Sources */,
@@ -554,11 +587,14 @@
 				4F1CE8DC2AC6C3D1002089B8 /* OrderPaidScreen.swift in Sources */,
 				4FF82FAD2AC6FE0600E38198 /* ApartmentsListViewModel.swift in Sources */,
 				4FEDCBE62AC2E2E800C3BEC2 /* Resources.swift in Sources */,
+				4FF82FB62AC7013B00E38198 /* BookingViewModel.swift in Sources */,
+				4FF82FBA2AC702AA00E38198 /* TouristModel.swift in Sources */,
 				4FEDCBD42AC2E0C900C3BEC2 /* ContentView.swift in Sources */,
 				4FF82FA52AC6F93500E38198 /* Links.swift in Sources */,
 				4FACA6772AC37F120090A8B1 /* View+Extensions.swift in Sources */,
 				4FACA6AC2AC5DC3D0090A8B1 /* PhoneTextField.swift in Sources */,
 				4FEDCBD22AC2E0C900C3BEC2 /* HotelApp.swift in Sources */,
+				4FF82FBC2AC7049800E38198 /* TouristField.swift in Sources */,
 				4F1CE8E02AC6C7DD002089B8 /* BookingAssembly.swift in Sources */,
 				4FF82FA72AC6FB3300E38198 /* DetailsRowInfo.swift in Sources */,
 			);

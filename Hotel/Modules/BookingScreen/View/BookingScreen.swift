@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+
+// TODO: Сделать шапку белой
 struct BookingScreen: View {
     @EnvironmentObject private var coordinator: Coordinator
-    @State private var touristes: [Tourist] = [Tourist()]
+    @State private var touristes: [TouristFieldModel] = [TouristFieldModel(tourist: Tourist())]
     @State private var phone = ""
     @State private var email = ""
     var body: some View {
@@ -161,28 +163,10 @@ private extension BookingScreen {
 
 // MARK: - Touristes Block
 private extension BookingScreen {
-    struct Tourist: Identifiable {
-        let id = UUID()
-        var name: String
-        var lastName: String
-        var dateOfBirth: String
-        var citizenship: String
-        var number: String
-        var dateOfNumber: String
-        
-        init() {
-            name = ""
-            lastName = ""
-            dateOfBirth = ""
-            citizenship = ""
-            number = ""
-            dateOfNumber = ""
-        }
-    }
     
     struct TouristBlock: View {
         let number: Int
-        @Binding var tourist: Tourist
+        @Binding var tourist: TouristFieldModel
         @State private var isOpen = true
         
         var body: some View {
@@ -191,15 +175,15 @@ private extension BookingScreen {
                     title
                     
                     if isOpen {
-                        GeneralTextField(title: R.Strings.Booking.name, placeholder: R.Strings.Booking.name, text: $tourist.name)
-                        GeneralTextField(title: R.Strings.Booking.lastName, placeholder: R.Strings.Booking.lastName, text: $tourist.lastName)
+                        GeneralTextField(title: R.Strings.Booking.name, placeholder: R.Strings.Booking.name, text: $tourist.value.name)
+                        GeneralTextField(title: R.Strings.Booking.lastName, placeholder: R.Strings.Booking.lastName, text: $tourist.value.lastName)
                         
-                        DateTextField(title: R.Strings.Booking.dateOfBirth, placeholder: R.Strings.Booking.dateOfBirth, text: $tourist.dateOfBirth)
+                        DateTextField(title: R.Strings.Booking.dateOfBirth, placeholder: R.Strings.Booking.dateOfBirth, text: $tourist.value.dateOfBirth)
                         
-                        GeneralTextField(title: R.Strings.Booking.citizenship, placeholder: R.Strings.Booking.citizenship, text: $tourist.citizenship)
-                        GeneralTextField(title: R.Strings.Booking.passportNumber, placeholder: R.Strings.Booking.passportNumber, text: $tourist.number)
+                        GeneralTextField(title: R.Strings.Booking.citizenship, placeholder: R.Strings.Booking.citizenship, text: $tourist.value.citizenship)
+                        GeneralTextField(title: R.Strings.Booking.passportNumber, placeholder: R.Strings.Booking.passportNumber, text: $tourist.value.number)
                         
-                        DateTextField(title: R.Strings.Booking.dateOfPassport, placeholder: R.Strings.Booking.dateOfPassport, text: $tourist.dateOfNumber)
+                        DateTextField(title: R.Strings.Booking.dateOfPassport, placeholder: R.Strings.Booking.dateOfPassport, text: $tourist.value.dateOfNumber)
                     }
                 }
                 .padding(16)
@@ -242,7 +226,7 @@ private extension BookingScreen {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         withAnimation(.linear(duration: 0.2)) {
-                            self.touristes.append(Tourist())
+                            self.touristes.append(TouristFieldModel(tourist: Tourist()))
                         }
                     }
             }
@@ -318,6 +302,10 @@ private extension BookingScreen {
     }
     
     private func payButtonPressed() {
+        for tourist in touristes {
+            tourist.checkFields()
+            print("~ error: ", tourist.hasAnyEmptyField)
+        }
         coordinator.push(.orderPaid)
     }
 }
