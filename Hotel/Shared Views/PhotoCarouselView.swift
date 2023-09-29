@@ -6,16 +6,18 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct PhotoCarouselView: View {
-    var photos = [Image("testImage1"), Image("testImage2"), Image("testImage2"), Image("testImage2"), Image("testImage2"), Image("testImage2"), Image("testImage2"), Image("testImage2")]
+    var photos: [URL] = []
     @State private var currentSelection = 0
     
     var body: some View {
         ZStack {
             TabView(selection: $currentSelection) {
                 ForEach(0..<photos.count, id: \.self) { index in
-                    photos[index]
+                    KFImage(photos[index])
+//                    photos[index]
                         .resizable()
                         .cornerRadius(15)
                         .frame(width: UIScreen.main.bounds.width - 32)

@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct HotelScreen: View {
+struct HotelScreen<ViewModel>: View where ViewModel: HotelViewModelProtocol {
     @EnvironmentObject private var coordinator: Coordinator
+    @StateObject var viewModel: ViewModel
+    
     var body: some View {
         ZStack {
             ScrollView(showsIndicators: false) {
@@ -30,6 +32,9 @@ struct HotelScreen: View {
                     .sfProDisplayFont(ofWeight: 500, size: 18)
             }
         }
+        .onAppear {
+            viewModel.loadData()
+        }
     }
 }
 
@@ -37,7 +42,7 @@ struct HotelScreen: View {
 private extension HotelScreen {
     var hotelNameView: some View {
         HStack {
-            Text("Steigenberger Makadi")
+            Text(viewModel.info?.name ?? "")
                 .sfProDisplayFont(ofWeight: 500, size: 22)
                 .multilineTextAlignment(.leading)
             Spacer()
@@ -46,21 +51,25 @@ private extension HotelScreen {
     }
     
     var hotelAddressView: some View {
-        HStack {
-            Text("Madinat Makadi, Safaga Road, Makadi Bay, Египет")
-                .sfProDisplayFont(ofWeight: 500, size: 14)
-                .foregroundColor(R.Colors.blue)
-            Spacer()
+        Button {
+            
+        } label: {
+            HStack {
+                Text(viewModel.info?.adress ?? "")
+                    .sfProDisplayFont(ofWeight: 500, size: 14)
+                    .foregroundColor(R.Colors.blue)
+                Spacer()
+            }
+            .frame(height: 17)
         }
-        .frame(height: 17)
     }
     
     var hotelPriceView: some View {
         HStack(alignment: .bottom, spacing: 8) {
-            Text("от 134 673 ₽")
+            Text("от \((viewModel.info?.minimalPrice ?? 0.0).formatted) ₽")
                 .sfProDisplayFont(ofWeight: 600, size: 30)
                 .frame(height: 36)
-            Text("за тур с перелётом")
+            Text(viewModel.info?.priceForIt ?? "")
                 .sfProDisplayFont(ofWeight: 400, size: 16)
                 .foregroundColor(R.Colors.gray)
                 .frame(height: 19)
@@ -72,17 +81,17 @@ private extension HotelScreen {
     var mainBlock: some View {
         BlockView(roundedCorners: [.bottomLeft, .bottomRight]) {
             VStack(spacing: 0) {
-                PhotoCarouselView()
+                PhotoCarouselView(photos: viewModel.info?.imageUrls ?? [])
                     .padding(.bottom, 16)
                 Group {
-                    RatingView(rating: 5, ratingName: "Превосходно")
+                    RatingView(rating: viewModel.info?.rating ?? 0.0, ratingName: viewModel.info?.ratingName ?? "-")
                         .padding(.bottom, 8)
                     hotelNameView.padding(.bottom, 8)
                     hotelAddressView.padding(.bottom, 16)
                     hotelPriceView.padding(.bottom, 16)
-                }.padding(.horizontal, 16)
+                }
+                .padding(.horizontal, 16)
             }
-            
         }
     }
 }
@@ -98,12 +107,12 @@ private extension HotelScreen {
     }
     
     var labels: some View {
-        LabelsList(labels: ["3-я линия", "Платный Wi-Fi в фойе", "30 км до аэропорта", "1 км до пляжа"])
+        LabelsList(labels: viewModel.info?.aboutTheHotel.peculiarities ?? [])
     }
     
     var hotelInfo: some View {
         HStack {
-            Text("Отель VIP-класса с собственными гольф полями. Высокий уровнь сервиса. Рекомендуем для респектабельного отдыха. Отель принимает гостей от 18 лет!")
+            Text(viewModel.info?.aboutTheHotel.description ?? "")
                 .customFont(.sfProDisplay(.regular), ofSize: 16)
                 .foregroundColor(Color.black.opacity(0.9))
                 .multilineTextAlignment(.leading)
@@ -122,18 +131,6 @@ private extension HotelScreen {
         }
     }
     
-    // TODO: Вынести в Model
-    struct DetailsRowInfo {
-        let image: Image
-        let title: String
-        let subtitle: String
-        
-        static let conveniences = DetailsRowInfo(image: R.Images.HappyEmoji, title: R.Strings.Hotel.conveniences, subtitle: R.Strings.Hotel.conveniencesSubtitle)
-        
-        static let included = DetailsRowInfo(image: R.Images.TickSquare, title: R.Strings.Hotel.included, subtitle: R.Strings.Hotel.includedSubtitle)
-        
-        static let notIncluded = DetailsRowInfo(image: R.Images.CloseSquare, title: R.Strings.Hotel.notIncluded, subtitle: R.Strings.Hotel.notIncludedSubtitle)
-    }
     
     func detailInfoRow(_ info: DetailsRowInfo, hasDivider: Bool = true) -> some View {
         // TODO: вынести всю инфу в ВМ
@@ -199,10 +196,3 @@ private extension HotelScreen {
     }
 }
 
-struct HotelScreenPreview: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            HotelScreen()
-        }
-    }
-}
