@@ -8,7 +8,6 @@
 import SwiftUI
 
 
-// TODO: Сделать шапку белой
 struct BookingScreen<ViewModel>: View where ViewModel: BookingViewModelProtocol {
     @EnvironmentObject var coordinator: Coordinator
     @Environment(\.loadingIndicator) private var showLoadingIndicator

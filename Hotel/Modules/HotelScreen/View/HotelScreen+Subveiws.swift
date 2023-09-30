@@ -103,7 +103,6 @@ extension HotelScreen {
     
     
     func detailInfoRow(_ info: DetailsRowInfo, hasDivider: Bool = true) -> some View {
-        // TODO: вынести всю инфу в ВМ
         Button {
             print("~ info tap")
         } label: {
