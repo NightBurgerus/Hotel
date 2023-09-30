@@ -9,7 +9,7 @@ import SwiftUI
 
 protocol HotelViewModelProtocol: AnyObject, ObservableObject {
     var info: Hotel? { get }
-    func loadData()
+    func loadData(completion: @escaping() -> ())
 }
 
 final class HotelViewModel: HotelViewModelProtocol {
@@ -20,8 +20,9 @@ final class HotelViewModel: HotelViewModelProtocol {
         self.repository = repository
     }
     
-    func loadData() {
+    func loadData(completion: @escaping() -> ()) {
         repository.getHotel { response in
+            completion()
             switch response {
             case .success(let hotel):
                 self.info = hotel

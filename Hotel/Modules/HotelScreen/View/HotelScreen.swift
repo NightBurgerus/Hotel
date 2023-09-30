@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HotelScreen<ViewModel>: View where ViewModel: HotelViewModelProtocol {
     @EnvironmentObject private var coordinator: Coordinator
+    @Environment(\.loadingIndicator) private var showLoadingIndicator
     @StateObject var viewModel: ViewModel
     
     var body: some View {
@@ -33,7 +34,10 @@ struct HotelScreen<ViewModel>: View where ViewModel: HotelViewModelProtocol {
             }
         }
         .onAppear {
-            viewModel.loadData()
+            showLoadingIndicator.wrappedValue = true
+            viewModel.loadData {
+                showLoadingIndicator.wrappedValue = false
+            }
         }
     }
 }

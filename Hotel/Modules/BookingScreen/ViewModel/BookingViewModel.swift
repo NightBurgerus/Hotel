@@ -31,7 +31,7 @@ protocol BookingViewModelProtocol: ObservableObject {
     
     var tourists: [TouristFieldModel] { get set }
     
-    func getInfo()
+    func getInfo(completion: @escaping() -> ())
     func addTourist()
     func checkFields() -> Bool
 }
@@ -69,8 +69,9 @@ final class BookingViewModel: BookingViewModelProtocol {
         }
     }
     
-    func getInfo() {
+    func getInfo(completion: @escaping() -> ()) {
         repository.getBookingInfo { response in
+            completion()
             switch response {
             case .success(let info):
                 self.info = info

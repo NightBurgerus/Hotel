@@ -78,6 +78,7 @@
 		4FF82FC12AC71CD900E38198 /* TextFieldController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FC02AC71CD900E38198 /* TextFieldController.swift */; };
 		4FF82FC32AC721A700E38198 /* PassportTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FC22AC721A700E38198 /* PassportTextField.swift */; };
 		4FF82FC52AC74EEE00E38198 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FC42AC74EEE00E38198 /* Validator.swift */; };
+		4FF82FC72AC817F900E38198 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FC62AC817F900E38198 /* LoadingIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -152,6 +153,7 @@
 		4FF82FC02AC71CD900E38198 /* TextFieldController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldController.swift; sourceTree = "<group>"; };
 		4FF82FC22AC721A700E38198 /* PassportTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportTextField.swift; sourceTree = "<group>"; };
 		4FF82FC42AC74EEE00E38198 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		4FF82FC62AC817F900E38198 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -412,6 +414,7 @@
 				4FACA67A2AC471060090A8B1 /* LabelsList.swift */,
 				4FACA67C2AC574FD0090A8B1 /* GeneralButton.swift */,
 				4F1CE8EB2AC6CD5E002089B8 /* BackButton.swift */,
+				4FF82FC62AC817F900E38198 /* LoadingIndicator.swift */,
 			);
 			path = "Shared Views";
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				4FEDCC152AC2EBC400C3BEC2 /* SFProDisplayFontsEnum.swift in Sources */,
 				4FF82FC12AC71CD900E38198 /* TextFieldController.swift in Sources */,
 				4FACA6832AC59FB80090A8B1 /* TODOlist.swift in Sources */,
+				4FF82FC72AC817F900E38198 /* LoadingIndicator.swift in Sources */,
 				4FACA6AE2AC5E05E0090A8B1 /* GeneralTextField.swift in Sources */,
 				4FACA6872AC5AC9D0090A8B1 /* BookingScreen.swift in Sources */,
 				4FF82FAB2AC6FD2000E38198 /* ApartmentsListModel.swift in Sources */,
@@ -756,8 +760,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -786,8 +790,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

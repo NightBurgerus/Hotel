@@ -30,9 +30,9 @@ final class TouristFieldModel: ObservableObject {
     func checkFields() {
         nameError = value.name.isEmpty
         lastNameError = value.lastName.isEmpty
-        dateOfBirthError = value.dateOfBirth.filter({ String($0) == "_" }).count != 0
+        dateOfBirthError = value.dateOfBirth.filter({ String($0) == "_" }).count != 0 || value.dateOfBirth.isEmpty
         citizenshipError = value.citizenship.isEmpty
-        passportError = value.passportNumber.filter({ String($0) == "_" }).count != 0
-        dateOfPassportError = value.dateOfPassport.filter({ String($0) == "_" }).count != 0
+        passportError = value.passportNumber.filter({ String($0) == "_" }).count != 0 || value.passportNumber.isEmpty
+        dateOfPassportError = value.dateOfPassport.filter({ String($0) == "_" }).count != 0 || value.dateOfPassport.isEmpty
     }
 }

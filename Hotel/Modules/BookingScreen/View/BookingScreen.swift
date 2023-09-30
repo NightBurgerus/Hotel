@@ -11,6 +11,7 @@ import SwiftUI
 // TODO: Сделать шапку белой
 struct BookingScreen<ViewModel>: View where ViewModel: BookingViewModelProtocol {
     @EnvironmentObject private var coordinator: Coordinator
+    @Environment(\.loadingIndicator) private var showLoadingIndicator
     @StateObject var viewModel: ViewModel
     
     var body: some View {
@@ -47,7 +48,10 @@ struct BookingScreen<ViewModel>: View where ViewModel: BookingViewModelProtocol 
             }
         }
         .onAppear {
-            viewModel.getInfo()
+            showLoadingIndicator.wrappedValue = true
+            viewModel.getInfo {
+                showLoadingIndicator.wrappedValue = false
+            }
         }
     }
 }

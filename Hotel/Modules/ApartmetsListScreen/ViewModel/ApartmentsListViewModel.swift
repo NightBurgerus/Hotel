@@ -10,7 +10,7 @@ import OSLog
 
 protocol ApartmentsListViewModelProtocol: ObservableObject {
     var rooms: [Apartment] { get }
-    func getApartments()
+    func getApartments(completion: @escaping() -> ())
 }
 
 final class ApartmentsListViewModel: ApartmentsListViewModelProtocol {
@@ -22,8 +22,9 @@ final class ApartmentsListViewModel: ApartmentsListViewModelProtocol {
         self.repository = repository
     }
     
-    func getApartments() {
+    func getApartments(completion: @escaping() -> ()) {
         repository.getApartments { response in
+            completion()
             switch response {
             case .success(let rooms):
                 self.rooms = rooms

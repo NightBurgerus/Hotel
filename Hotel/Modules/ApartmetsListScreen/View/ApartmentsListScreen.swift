@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ApartmensListScreen<ViewModel>: View where ViewModel: ApartmentsListViewModelProtocol {
     @StateObject var viewModel: ViewModel
+    @Environment(\.loadingIndicator) private var showLoadingIndicator
     
     var body: some View {
         ScrollView(showsIndicators: false) {
@@ -34,7 +35,10 @@ struct ApartmensListScreen<ViewModel>: View where ViewModel: ApartmentsListViewM
             }
         }
         .onAppear {
-            viewModel.getApartments()
+            showLoadingIndicator.wrappedValue = true
+            viewModel.getApartments {
+                showLoadingIndicator.wrappedValue = false
+            }
         }
     }
 }
