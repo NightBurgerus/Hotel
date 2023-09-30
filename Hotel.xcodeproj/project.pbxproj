@@ -79,6 +79,9 @@
 		4FF82FC32AC721A700E38198 /* PassportTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FC22AC721A700E38198 /* PassportTextField.swift */; };
 		4FF82FC52AC74EEE00E38198 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FC42AC74EEE00E38198 /* Validator.swift */; };
 		4FF82FC72AC817F900E38198 /* LoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FC62AC817F900E38198 /* LoadingIndicator.swift */; };
+		4FF82FC92AC8269C00E38198 /* HotelScreen+Subveiws.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FC82AC8269C00E38198 /* HotelScreen+Subveiws.swift */; };
+		4FF82FCB2AC8276E00E38198 /* BookingScreen+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FCA2AC8276E00E38198 /* BookingScreen+Subviews.swift */; };
+		4FF82FCD2AC827DA00E38198 /* TouristBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FCC2AC827DA00E38198 /* TouristBlockView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -154,6 +157,9 @@
 		4FF82FC22AC721A700E38198 /* PassportTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportTextField.swift; sourceTree = "<group>"; };
 		4FF82FC42AC74EEE00E38198 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		4FF82FC62AC817F900E38198 /* LoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicator.swift; sourceTree = "<group>"; };
+		4FF82FC82AC8269C00E38198 /* HotelScreen+Subveiws.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HotelScreen+Subveiws.swift"; sourceTree = "<group>"; };
+		4FF82FCA2AC8276E00E38198 /* BookingScreen+Subviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingScreen+Subviews.swift"; sourceTree = "<group>"; };
+		4FF82FCC2AC827DA00E38198 /* TouristBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristBlockView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -248,6 +254,8 @@
 			children = (
 				4FACA6862AC5AC9D0090A8B1 /* BookingScreen.swift */,
 				4FF82FBB2AC7049800E38198 /* TouristField.swift */,
+				4FF82FCA2AC8276E00E38198 /* BookingScreen+Subviews.swift */,
+				4FF82FCC2AC827DA00E38198 /* TouristBlockView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -332,6 +340,7 @@
 			isa = PBXGroup;
 			children = (
 				4FEDCBE22AC2E27700C3BEC2 /* HotelScreen.swift */,
+				4FF82FC82AC8269C00E38198 /* HotelScreen+Subveiws.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -602,9 +611,11 @@
 				4FACA67D2AC574FD0090A8B1 /* GeneralButton.swift in Sources */,
 				4FACA6B02AC5F0070090A8B1 /* String+Numbers.swift in Sources */,
 				4FF82FC52AC74EEE00E38198 /* Validator.swift in Sources */,
+				4FF82FC92AC8269C00E38198 /* HotelScreen+Subveiws.swift in Sources */,
 				4F1CE8E22AC6C803002089B8 /* ApartmentsListAssembly.swift in Sources */,
 				4FACA67B2AC471060090A8B1 /* LabelsList.swift in Sources */,
 				4FACA66F2AC372880090A8B1 /* RatingView.swift in Sources */,
+				4FF82FCB2AC8276E00E38198 /* BookingScreen+Subviews.swift in Sources */,
 				4FACA6812AC59C150090A8B1 /* ApartmentsListScreen.swift in Sources */,
 				4F1CE8E72AC6C88E002089B8 /* Coordinator.swift in Sources */,
 				4F1CE8E42AC6C828002089B8 /* HotelAssembly.swift in Sources */,
@@ -622,6 +633,7 @@
 				4FACA6772AC37F120090A8B1 /* View+Extensions.swift in Sources */,
 				4FACA6AC2AC5DC3D0090A8B1 /* PhoneTextField.swift in Sources */,
 				4FEDCBD22AC2E0C900C3BEC2 /* HotelApp.swift in Sources */,
+				4FF82FCD2AC827DA00E38198 /* TouristBlockView.swift in Sources */,
 				4FF82FBC2AC7049800E38198 /* TouristField.swift in Sources */,
 				4F1CE8E02AC6C7DD002089B8 /* BookingAssembly.swift in Sources */,
 				4FF82FA72AC6FB3300E38198 /* DetailsRowInfo.swift in Sources */,

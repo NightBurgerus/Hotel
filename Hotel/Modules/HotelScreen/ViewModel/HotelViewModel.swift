@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OSLog
 
 protocol HotelViewModelProtocol: AnyObject, ObservableObject {
     var info: Hotel? { get }
@@ -14,6 +15,7 @@ protocol HotelViewModelProtocol: AnyObject, ObservableObject {
 
 final class HotelViewModel: HotelViewModelProtocol {
     @Published private(set) var info: Hotel? = nil
+    private let logger = Logger()
     private let repository: HotelRepositoryProtocol
     
     init(repository: HotelRepositoryProtocol) {
@@ -27,7 +29,7 @@ final class HotelViewModel: HotelViewModelProtocol {
             case .success(let hotel):
                 self.info = hotel
             case .failure(let error):
-                print("~ error: ", error)
+                self.logger.error("HotelVM error: \(error)")
                 break
             }
         }
