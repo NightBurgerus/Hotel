@@ -165,13 +165,13 @@ private extension BookingScreen {
                     title
                     
                     if isOpen {
-                        GeneralTextField(title: R.Strings.Booking.name, placeholder: R.Strings.Booking.name, text: $tourist.value.name, error: $tourist.nameError, isFirstResponder: .constant(false))
+                        GeneralTextField(title: R.Strings.Booking.name, placeholder: R.Strings.Booking.name, text: $tourist.value.name, error: $tourist.nameError, isFirstResponder: $tourist.nameIsFirstResponder)
                         
-                        GeneralTextField(title: R.Strings.Booking.lastName, placeholder: R.Strings.Booking.lastName, text: $tourist.value.lastName, error: $tourist.lastNameError, isFirstResponder: .constant(false))
+                        GeneralTextField(title: R.Strings.Booking.lastName, placeholder: R.Strings.Booking.lastName, text: $tourist.value.lastName, error: $tourist.lastNameError, isFirstResponder: $tourist.lastNameIsFirstResponder)
                         
                         DateTextField(title: R.Strings.Booking.dateOfBirth, placeholder: R.Strings.Booking.dateOfBirth, text: $tourist.value.dateOfBirth, error: $tourist.dateOfBirthError)
                         
-                        GeneralTextField(title: R.Strings.Booking.citizenship, placeholder: R.Strings.Booking.citizenship, text: $tourist.value.citizenship, error: $tourist.citizenshipError, isFirstResponder: .constant(false))
+                        GeneralTextField(title: R.Strings.Booking.citizenship, placeholder: R.Strings.Booking.citizenship, text: $tourist.value.citizenship, error: $tourist.citizenshipError, isFirstResponder: $tourist.citizenshipIsFirstResponder)
                         
                         PassportTextField(title: R.Strings.Booking.passportNumber, placeholder: R.Strings.Booking.passportNumber, text: $tourist.value.passportNumber, error: $tourist.passportError)
                         
@@ -295,13 +295,9 @@ private extension BookingScreen {
     }
     
     private func payButtonPressed() {
-        var hasError = false
-        for tourist in viewModel.tourists {
-            tourist.checkFields()
-            hasError = hasError || tourist.hasAnyEmptyField
-            dump(tourist)
+        if viewModel.checkFields() {
+            return
         }
-        if hasError { return }
         coordinator.push(.orderPaid)
     }
 }

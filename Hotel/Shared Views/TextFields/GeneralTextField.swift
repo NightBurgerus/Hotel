@@ -13,6 +13,7 @@ struct GeneralTextField: View {
     @Binding var text: String
     @Binding var error: Bool
     @Binding var isFirstResponder: Bool
+    @State private var responder: Bool = false
     var onTextChange: (String) -> () = { _ in }
     
     var body: some View {
@@ -24,9 +25,12 @@ struct GeneralTextField: View {
                     .kerning(0.12)
                     .foregroundColor(R.Colors.gray066)
             }
-            TextFieldBridge(currentText: text, isFirstResponder: $isFirstResponder, placeholder: placeholder, onTextChange: { text = $0 })
+            TextFieldBridge(currentText: text, isFirstResponder: $responder, placeholder: placeholder, onTextChange: { text = $0 })
                 .frame(height: 18)
                 .onChange(of: text) { _ in error = false}
+                .onChange(of: responder) { newValue in
+                    isFirstResponder = newValue
+                }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
@@ -36,7 +40,7 @@ struct GeneralTextField: View {
                 .fill(error ? R.Colors.error : R.Colors.gray096)
                 .overlay(
                     Group {
-                        if isFirstResponder {
+                        if responder {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(R.Colors.blue)
                         }

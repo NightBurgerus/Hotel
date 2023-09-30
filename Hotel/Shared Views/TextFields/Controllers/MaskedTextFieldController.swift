@@ -75,7 +75,6 @@ final class MaskedTextFieldController: TextFieldController {
         }
         textField.keyboardType = configuration.keyboardType
         textField.text = currentText
-        print("~ current text of \(placeholder): \(currentText)")
         view.addSubview(textField)
 
         textField.translatesAutoresizingMaskIntoConstraints = false

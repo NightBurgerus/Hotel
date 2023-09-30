@@ -64,11 +64,11 @@ class TextFieldController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.firstResponder = true
+        firstResponder = true
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.firstResponder = false
+        firstResponder = false
     }
 
 }

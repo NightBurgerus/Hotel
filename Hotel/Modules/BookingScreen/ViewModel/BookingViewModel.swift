@@ -33,6 +33,7 @@ protocol BookingViewModelProtocol: ObservableObject {
     
     func getInfo()
     func addTourist()
+    func checkFields() -> Bool
 }
 
 final class BookingViewModel: BookingViewModelProtocol {
@@ -82,6 +83,18 @@ final class BookingViewModel: BookingViewModelProtocol {
     
     func addTourist() {
         tourists.append(TouristFieldModel(tourist: Tourist()))
+    }
+    
+    func checkFields() -> Bool {
+        var hasError = false
+        phoneError = !validator.isValidPhone(phoneNumber)
+        emailError = !validator.isValidEmail(email)
+        hasError = hasError || phoneError || emailError
+        for tourist in tourists {
+            tourist.checkFields()
+            hasError = hasError || tourist.hasAnyEmptyField
+        }
+        return hasError
     }
 }
 
