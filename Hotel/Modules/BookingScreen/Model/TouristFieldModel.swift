@@ -13,9 +13,11 @@ final class TouristFieldModel: ObservableObject {
     @Published var lastNameError = false
     @Published var dateOfBirthError = false
     @Published var citizenshipError = false
+    @Published var passportError = false
+    @Published var dateOfPassportError = false
     
     var hasAnyEmptyField: Bool {
-        return nameError || lastNameError || dateOfBirthError || citizenshipError
+        return nameError || lastNameError || dateOfBirthError || citizenshipError || passportError || dateOfPassportError
     }
     
     init(tourist: Tourist) {
@@ -27,5 +29,7 @@ final class TouristFieldModel: ObservableObject {
         lastNameError = value.lastName.isEmpty
         dateOfBirthError = value.dateOfBirth.isEmpty
         citizenshipError = value.citizenship.isEmpty
+        passportError = value.passportNumber.isEmpty
+        dateOfPassportError = value.dateOfPassport.isEmpty
     }
 }

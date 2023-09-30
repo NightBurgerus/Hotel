@@ -12,10 +12,6 @@ import SwiftUI
 struct BookingScreen<ViewModel>: View where ViewModel: BookingViewModelProtocol {
     @EnvironmentObject private var coordinator: Coordinator
     @StateObject var viewModel: ViewModel
-    @State private var touristes: [TouristFieldModel] = [TouristFieldModel(tourist: Tourist())]
-    @State private var phone = ""
-    @State private var email = ""
-    @State private var emailError = false
     
     var body: some View {
         ZStack {
@@ -169,16 +165,17 @@ private extension BookingScreen {
                     title
                     
                     if isOpen {
-                        GeneralTextField(title: R.Strings.Booking.name, placeholder: R.Strings.Booking.name, text: $tourist.value.name, error: .constant(false), isFirstResponder: .constant(false))
-                        GeneralTextField(title: R.Strings.Booking.lastName, placeholder: R.Strings.Booking.lastName, text: $tourist.value.lastName, error: .constant(false), isFirstResponder: .constant(false))
+                        GeneralTextField(title: R.Strings.Booking.name, placeholder: R.Strings.Booking.name, text: $tourist.value.name, error: $tourist.nameError, isFirstResponder: .constant(false))
                         
-                        DateTextField(title: R.Strings.Booking.dateOfBirth, placeholder: R.Strings.Booking.dateOfBirth, text: $tourist.value.dateOfBirth)
+                        GeneralTextField(title: R.Strings.Booking.lastName, placeholder: R.Strings.Booking.lastName, text: $tourist.value.lastName, error: $tourist.lastNameError, isFirstResponder: .constant(false))
                         
-                        GeneralTextField(title: R.Strings.Booking.citizenship, placeholder: R.Strings.Booking.citizenship, text: $tourist.value.citizenship, error: .constant(false), isFirstResponder: .constant(false))
+                        DateTextField(title: R.Strings.Booking.dateOfBirth, placeholder: R.Strings.Booking.dateOfBirth, text: $tourist.value.dateOfBirth, error: $tourist.dateOfBirthError)
                         
-                        PassportTextField(title: R.Strings.Booking.passportNumber, placeholder: R.Strings.Booking.passportNumber, text: $tourist.value.number)
+                        GeneralTextField(title: R.Strings.Booking.citizenship, placeholder: R.Strings.Booking.citizenship, text: $tourist.value.citizenship, error: $tourist.citizenshipError, isFirstResponder: .constant(false))
                         
-                        DateTextField(title: R.Strings.Booking.dateOfPassport, placeholder: R.Strings.Booking.dateOfPassport, text: $tourist.value.dateOfNumber)
+                        PassportTextField(title: R.Strings.Booking.passportNumber, placeholder: R.Strings.Booking.passportNumber, text: $tourist.value.passportNumber, error: $tourist.passportError)
+                        
+                        DateTextField(title: R.Strings.Booking.dateOfPassport, placeholder: R.Strings.Booking.dateOfPassport, text: $tourist.value.dateOfPassport, error: $tourist.dateOfPassportError)
                     }
                 }
                 .padding(16)
@@ -221,7 +218,7 @@ private extension BookingScreen {
                     .contentShape(Rectangle())
                     .onTapGesture {
                         withAnimation(.linear(duration: 0.2)) {
-                            self.touristes.append(TouristFieldModel(tourist: Tourist()))
+                            self.viewModel.addTourist()
                         }
                     }
             }
@@ -232,8 +229,9 @@ private extension BookingScreen {
     
     var touristesBlock: some View {
         VStack(spacing: 0) {
-            ForEach(0..<touristes.count, id: \.self) { i in
-                TouristBlock(number: i + 1, tourist: $touristes[i]).padding(.top, 8)
+            ForEach(0..<viewModel.tourists.count, id: \.self) { i in
+                TouristBlock(number: i + 1, tourist: $viewModel.tourists[i])
+                    .padding(.top, 8)
             }
             addTourist.padding(.top, 8)
         }
@@ -297,10 +295,13 @@ private extension BookingScreen {
     }
     
     private func payButtonPressed() {
-        for tourist in touristes {
+        var hasError = false
+        for tourist in viewModel.tourists {
             tourist.checkFields()
-            print("~ error: ", tourist.hasAnyEmptyField)
+            hasError = hasError || tourist.hasAnyEmptyField
+            dump(tourist)
         }
+        if hasError { return }
         coordinator.push(.orderPaid)
     }
 }

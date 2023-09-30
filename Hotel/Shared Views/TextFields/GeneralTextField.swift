@@ -26,6 +26,7 @@ struct GeneralTextField: View {
             }
             TextFieldBridge(currentText: text, isFirstResponder: $isFirstResponder, placeholder: placeholder, onTextChange: { text = $0 })
                 .frame(height: 18)
+                .onChange(of: text) { _ in error = false}
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)

@@ -13,15 +13,15 @@ struct Tourist: Identifiable {
     var lastName: String
     var dateOfBirth: String
     var citizenship: String
-    var number: String
-    var dateOfNumber: String
+    var passportNumber: String
+    var dateOfPassport: String
     
     init() {
         name = ""
         lastName = ""
         dateOfBirth = ""
         citizenship = ""
-        number = ""
-        dateOfNumber = ""
+        passportNumber = ""
+        dateOfPassport = ""
     }
 }

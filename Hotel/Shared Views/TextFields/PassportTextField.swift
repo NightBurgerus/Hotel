@@ -12,6 +12,7 @@ struct PassportTextField: View {
     var placeholder: String = ""
     @Binding var text: String
     @State private var isFirstResponder: Bool = false
+    @Binding var error: Bool
     var onTextChange: (String) -> () = { _ in }
     
     var body: some View {
@@ -25,13 +26,14 @@ struct PassportTextField: View {
             }
             PassportTextFieldBridge(currentText: text, isFirstResponder: $isFirstResponder, placeholder: placeholder, onTextChange: { text = $0 })
                 .frame(height: 18)
+                .onChange(of: text) { _ in error = false }
         }
         .padding(.horizontal, 16)
         .padding(.vertical, 10)
         .frame(height: 52)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(R.Colors.gray096)
+                .fill(error ? R.Colors.error : R.Colors.gray096)
                 .overlay(
                     Group {
                         if isFirstResponder {

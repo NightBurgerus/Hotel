@@ -29,7 +29,10 @@ protocol BookingViewModelProtocol: ObservableObject {
     var emailIsFirstResponder: Bool { get set }
     var emailError: Bool { get set }
     
+    var tourists: [TouristFieldModel] { get set }
+    
     func getInfo()
+    func addTourist()
 }
 
 final class BookingViewModel: BookingViewModelProtocol {
@@ -49,8 +52,20 @@ final class BookingViewModel: BookingViewModelProtocol {
     @Published var emailIsFirstResponder = false
     @Published var emailError = false
     
+    @Published var tourists: [TouristFieldModel] = [TouristFieldModel(tourist: Tourist())]
+    
     init(repository: HotelRepositoryProtocol){
         self.repository = repository
+        
+        // Прокидываем изменение полей ошибок туристов
+        for tourist in tourists {
+            tourist
+                .objectWillChange
+                .sink { _ in
+                    self.objectWillChange.send()
+                }
+                .store(in: &cancellableSet)
+        }
     }
     
     func getInfo() {
@@ -63,6 +78,10 @@ final class BookingViewModel: BookingViewModelProtocol {
                 self.logger.error("Booking view model error: \(error)")
             }
         }
+    }
+    
+    func addTourist() {
+        tourists.append(TouristFieldModel(tourist: Tourist()))
     }
 }
 

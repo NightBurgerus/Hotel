@@ -74,7 +74,8 @@ final class MaskedTextFieldController: TextFieldController {
             textField.tintColor = UIColor.clear
         }
         textField.keyboardType = configuration.keyboardType
-        currentText = configuration.mask
+        textField.text = currentText
+        print("~ current text of \(placeholder): \(currentText)")
         view.addSubview(textField)
 
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -88,11 +89,12 @@ final class MaskedTextFieldController: TextFieldController {
     
     override func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Стирание символа
-        if string.isEmpty && currentText.count > 0 {
+        if string.isEmpty && (textField.text ?? "").count > 0 {
             if currentDigitsCount == 1 && configuration.type == MaskedTFConfiguration.phone.type { return false }
-            guard let index = currentText.unicodeScalars.lastIndex(where: { char in CharacterSet.decimalDigits.contains(char) }) else { return false }
-            currentText.replaceSubrange(index...index, with: configuration.separator)
-            textField.text = currentText
+            
+            guard let index = textField.text!.unicodeScalars.lastIndex(where: { char in CharacterSet.decimalDigits.contains(char) }) else { return false }
+            textField.text!.replaceSubrange(index...index, with: configuration.separator)
+            currentText = textField.text!
             if textField.text!.count > 0 {
                 textField.placeholder = ""
             }
@@ -101,9 +103,9 @@ final class MaskedTextFieldController: TextFieldController {
         }
         // Добавление символа
         if !string.isEmpty {
-            guard let index = currentText.firstIndex(where: { String($0) == configuration.separator}) else { return false }
-            currentText.replaceSubrange(index...index, with: string)
-            textField.text = currentText
+            guard let index = (textField.text ?? "").firstIndex(where: { String($0) == configuration.separator }) else { return false }
+            textField.text!.replaceSubrange(index...index, with: string)
+            currentText = textField.text!
             onTextChange(textField.text ?? "")
         }
         return false
@@ -120,8 +122,18 @@ final class MaskedTextFieldController: TextFieldController {
     
     override func textFieldDidEndEditing(_ textField: UITextField) {
         super.textFieldDidEndEditing(textField)
+        
+        if configuration.type == .phone {
+            if currentText.isEmpty || currentText.filter({ String($0) == configuration.separator }).count == 10 {
+                textField.text = ""
+                textField.placeholder = placeholder
+                onTextChange("")
+            }
+            return
+        }
+        
         // Если данных нет
-        if currentText.filter({ String($0) == configuration.separator }).count == configuration.countSeparators {
+        if currentText.filter({ String($0) == configuration.separator }).count == configuration.countSeparators{
             textField.text = ""
             textField.placeholder = placeholder
             onTextChange("")
