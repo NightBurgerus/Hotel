@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// Контроллер, хранящий в себе текстовое поле
+
 class TextFieldController: UIViewController, UITextFieldDelegate {
     @Binding private var firstResponder: Bool
     private let textField = UITextField()

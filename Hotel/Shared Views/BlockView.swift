@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// __Вью-обёртка__
+/// Добавляет закруглённый фон к контенту
+
 struct BlockView<T: View>: View {
     let backgroundColor: Color
     let cornerRadius: CGFloat

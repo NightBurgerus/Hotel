@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+/// Представление __TextFieldController__ или __MaskedTextFieldController__
+/// в виде SwiftUI структур.
+/// Сделано, в основном, для полей с масками. Текстовое поле конфигурируется до того,
+/// как введённый символ появится на экране.
+/// В SwiftUI при вводе в текстовое поле новый символ сначала появляется,
+/// а затем помещается в нужно место в маске.
+/// Поэтому для решения этой задачи используются __UITextField__ из UIKit
+
 struct PassportTextFieldBridge: UIViewControllerRepresentable {
     typealias UIViewControllerType = MaskedTextFieldController
     var currentText: String

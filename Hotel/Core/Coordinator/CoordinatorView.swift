@@ -22,6 +22,7 @@ struct CoordinatorView: View {
             .environmentObject(coordinator)
             .environment(\.loadingIndicator, $animating)
             .onAppear {
+                // Белый фон у навбара
                 let appearance = UINavigationBarAppearance()
                 appearance.backgroundColor = UIColor.white
                 

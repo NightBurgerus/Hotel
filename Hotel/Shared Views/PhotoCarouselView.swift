@@ -8,6 +8,8 @@
 import SwiftUI
 import Kingfisher
 
+/// __Карусель из фото__
+
 struct PhotoCarouselView: View {
     var photos: [URL] = []
     @State private var currentSelection = 0
@@ -17,7 +19,6 @@ struct PhotoCarouselView: View {
             TabView(selection: $currentSelection) {
                 ForEach(0..<photos.count, id: \.self) { index in
                     KFImage(photos[index])
-//                    photos[index]
                         .resizable()
                         .cornerRadius(15)
                         .frame(width: UIScreen.main.bounds.width - 32)

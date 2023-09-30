@@ -142,25 +142,25 @@ extension BookingScreen {
 
 // MARK: - Total Block
 extension BookingScreen {
-    func totalRow(_ info: String, price: Double) -> some View {
+    func totalRow(_ info: String, price: String) -> some View {
         HStack {
             Text(info)
                 .customFont(.sfProDisplay(.regular), ofSize: 16)
                 .foregroundColor(R.Colors.gray)
             Spacer()
-            Text("\(price.formatted) ₽")
+            Text(price)
                 .customFont(.sfProDisplay(.regular), ofSize: 16)
                 .foregroundColor(.black)
         }
     }
     
-    func totalPrice(_ price: Double) -> some View {
+    func totalPrice(_ price: String) -> some View {
         HStack {
             Text(R.Strings.Booking.toPay)
                 .customFont(.sfProDisplay(.regular), ofSize: 16)
                 .foregroundColor(R.Colors.gray)
             Spacer()
-            Text("\(price.formatted) ₽")
+            Text(price)
                 .customFont(.sfProDisplay(.semibold), ofSize: 16)
                 .foregroundColor(R.Colors.blue)
         }
@@ -168,10 +168,10 @@ extension BookingScreen {
     var totalBlock: some View {
         BlockView {
             VStack(spacing: 16) {
-                totalRow(R.Strings.Booking.tour, price: 186600)
-                totalRow(R.Strings.Booking.fuelCollection, price: 9300)
-                totalRow(R.Strings.Booking.serviceFee, price: 2136)
-                totalPrice(198036)
+                totalRow(R.Strings.Booking.tour, price: viewModel.tourPrice)
+                totalRow(R.Strings.Booking.fuelCollection, price: viewModel.fuelCharge)
+                totalRow(R.Strings.Booking.serviceFee, price: viewModel.serviceCharge)
+                totalPrice(viewModel.totalPrice)
             }
             .padding(16)
         }
@@ -181,7 +181,7 @@ extension BookingScreen {
 // MARK: - Bottom Button
 extension BookingScreen {
     var buttonSpacer: some View {
-        GeneralButton(text: "\(R.Strings.Booking.pay) \(viewModel.totalPrice) ₽")
+        GeneralButton(text: "\(R.Strings.Booking.pay) \(viewModel) ₽")
             .padding(EdgeInsets(top: 12, leading: 16, bottom: 28, trailing: 16))
             .overlay(R.Colors.gray096)
     }

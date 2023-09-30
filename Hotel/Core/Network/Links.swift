@@ -7,6 +7,8 @@
 
 import Foundation
 
+/// __ Список всех ссылок API__
+
 struct Links {
     private init() {}
     

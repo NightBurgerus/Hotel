@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// __Общая вид кнопки__
+/// Белый текст на голубом фоне
+
 struct GeneralButton: View {
     let text: String
     var action: () -> () = {}

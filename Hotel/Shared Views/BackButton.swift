@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// __Кнопка назад__
+
 struct BackButton: View {
     @EnvironmentObject private var coordinator: Coordinator
     

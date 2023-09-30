@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// __ Простой индикатор загрузки__
+
 struct LoadingIndicator: UIViewControllerRepresentable {
     typealias UIViewControllerType = LoadingIndicatorController
     

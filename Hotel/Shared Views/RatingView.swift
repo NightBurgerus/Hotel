@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+/// __Рейтинг отеля/номера__
+
 enum RatingPlacement {
     case leading, center, trailing
 }

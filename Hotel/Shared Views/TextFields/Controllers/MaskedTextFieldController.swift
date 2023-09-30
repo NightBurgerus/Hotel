@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// Контроллер, хранящий текстовое поле, изменяющееся
+/// по маске.
+/// Маска задаётся через __MaksedTFConfiguration__
+
 enum MaskType {
     case phone
     case date

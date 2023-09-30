@@ -8,6 +8,8 @@
 import Foundation
 import OSLog
 
+/// __Валидация телефона и почты__
+
 final class Validator {
     private let logger = Logger()
     
