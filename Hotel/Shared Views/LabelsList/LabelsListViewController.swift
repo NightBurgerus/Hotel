@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OSLog
 
 /// __Контроллер списка лейблов__
 /// Каждый лейбл добавляется в вертикальный стэк для определения размеров
@@ -18,9 +19,8 @@ final class LabelsListViewController<T: View>: UIViewController {
     let horizontalSpacing: CGFloat
     let verticalSpacing: CGFloat
     
-    private var verticalStack = UIStackView()
-    private var uiSubviews = [UIView]()
     private var subviews = [T]()
+    private let logger = Logger()
     
     init(subviews: [T],
          frame: Binding<CGRect>,
@@ -39,76 +39,84 @@ final class LabelsListViewController<T: View>: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureView()
+        
     }
     
     private func configureView() {
-        verticalStack.axis = .vertical
-        verticalStack.spacing = verticalSpacing
-        view.addSubview(verticalStack)
-        constraint(verticalStack, to: view)
-        
-        for subview in self.subviews {
-            let uiSubview = UIHostingController(rootView: subview).view!
-            let row = newRow()
-            row.addArrangedSubview(uiSubview)
-            row.addArrangedSubview(UIView())
-            verticalStack.addArrangedSubview(row)
-            uiSubviews.append(uiSubview)
+        if subviews.count == 0 {
+            DispatchQueue.main.async {
+                self.frame = CGRect.zero
+            }
+            return
+        }
+        for subview in subviews {
+            
+            let host = UIView(frame: view.frame)
+            host.backgroundColor = UIColor.clear
+            let vc = UIHostingController(rootView: subview)
+            let uiSubview = vc.view!
+            uiSubview.backgroundColor = UIColor.clear
+            
+            uiSubview.translatesAutoresizingMaskIntoConstraints = false
+            host.addSubview(uiSubview)
+            NSLayoutConstraint.activate([
+                uiSubview.leadingAnchor.constraint(equalTo: host.leadingAnchor),
+                uiSubview.topAnchor.constraint(equalTo: host.topAnchor)
+            ])
+            
+            view.addSubview(host)
+            
+            vc.didMove(toParent: self)
         }
         
         DispatchQueue.main.async {
-            self.makeRows()
-            self.frame = self.verticalStack.frame
+            self.collapceHostingViews()
+            self.replace()
+        }
+   
+    }
+    
+    private func collapceHostingViews() {
+        for subview in view.subviews {
+            let hosted = subview.subviews[0]
+            subview.frame.size = hosted.bounds.size
         }
     }
     
-    private func makeRows() {
-        var currentRow = newRow()
-        let verticalStackWidth = verticalStack.frame.width
-        clearVerticalStack()
-        for uiSubview in uiSubviews {
-            if currentRow.subviews.map({ $0.bounds.width }).reduce(0, +) + uiSubview.bounds.width < verticalStackWidth {
-                currentRow.addArrangedSubview(uiSubview)
+    private func replace() {
+        var rowWidth: CGFloat = view.subviews[0].frame.width
+        for i in 1..<view.subviews.count {
+            let subview = view.subviews[i]
+            let prev = view.subviews[i - 1]
+            
+            let currentWidth = subview.frame.width
+            let currentPosition = rowWidth + horizontalSpacing
+            
+            if currentPosition + currentWidth < view.frame.width {
+                rowWidth += horizontalSpacing + currentWidth
+                let y = prev.frame.origin.y
+                let x = currentPosition
+                let origin = CGPoint(x: x, y: y)
+                    subview.frame.origin = origin
+                
                 continue
             }
-            currentRow.addArrangedSubview(UIView())
-            verticalStack.addArrangedSubview(currentRow)
-            currentRow = newRow()
-            currentRow.addArrangedSubview(uiSubview)
+            rowWidth = subview.frame.width
+            let y = prev.frame.origin.y + prev.frame.height + verticalSpacing
+            let x = 0.0
+            let origin = CGPoint(x: x, y: y)
+            subview.frame.origin = origin
+            self.view.frame.size = CGSize(width: self.view.frame.width, height: subview.frame.maxY)
+            self.frame = self.view.frame
+            
         }
-        currentRow.addArrangedSubview(UIView())
-        verticalStack.addArrangedSubview(currentRow)
-        verticalStack.layoutIfNeeded()
-    }
-    
-    private func clearVerticalStack() {
-        verticalStack.subviews.forEach({ row in
-            row.subviews.forEach { $0.removeFromSuperview() }
-            row.removeFromSuperview()
-        })
-        let currentWidth = verticalStack.frame.width
-        verticalStack.frame.size = CGSize(width: currentWidth, height: 0)
-    }
-    
-    private func constraint(_ view: UIView, to superview: UIView) {
-        view.translatesAutoresizingMaskIntoConstraints = false
         
-        NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: superview.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: superview.trailingAnchor)
-        ])
-    }
-    
-    private func newRow() -> UIStackView {
-        let newRow = UIStackView()
-        newRow.axis = .horizontal
-        newRow.spacing = horizontalSpacing
-        
-        verticalStack.addArrangedSubview(newRow)
-        constraint(newRow, to: verticalStack)
-
-        return newRow
+        var newFrame = CGRect(origin: view.frame.origin, size: .zero)
+        let height = (view.subviews.last?.frame.maxY ?? 0.0)
+        let newSize = CGSize(width: view.frame.width, height: height)
+        newFrame.size = newSize
+        frame = newFrame
     }
 }
+

@@ -81,6 +81,7 @@
 		4FF82FCB2AC8276E00E38198 /* BookingScreen+Subviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FCA2AC8276E00E38198 /* BookingScreen+Subviews.swift */; };
 		4FF82FCD2AC827DA00E38198 /* TouristBlockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FCC2AC827DA00E38198 /* TouristBlockView.swift */; };
 		4FF82FD02AC82B0A00E38198 /* LabelsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FF82FCF2AC82B0A00E38198 /* LabelsListViewController.swift */; };
+		4FFEA85E2AC868E8001F8FAF /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FFEA85D2AC868E8001F8FAF /* Test.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +159,7 @@
 		4FF82FCA2AC8276E00E38198 /* BookingScreen+Subviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookingScreen+Subviews.swift"; sourceTree = "<group>"; };
 		4FF82FCC2AC827DA00E38198 /* TouristBlockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouristBlockView.swift; sourceTree = "<group>"; };
 		4FF82FCF2AC82B0A00E38198 /* LabelsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsListViewController.swift; sourceTree = "<group>"; };
+		4FFEA85D2AC868E8001F8FAF /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -298,6 +300,7 @@
 				4FEDCBE42AC2E2B800C3BEC2 /* Resources */,
 				4FEDCBDF2AC2E26200C3BEC2 /* Modules */,
 				4FEDCBD72AC2E0CB00C3BEC2 /* Preview Content */,
+				4FFEA85D2AC868E8001F8FAF /* Test.swift */,
 			);
 			path = Hotel;
 			sourceTree = "<group>";
@@ -601,6 +604,7 @@
 				4FEDCC152AC2EBC400C3BEC2 /* SFProDisplayFontsEnum.swift in Sources */,
 				4FF82FC12AC71CD900E38198 /* TextFieldController.swift in Sources */,
 				4FF82FC72AC817F900E38198 /* LoadingIndicator.swift in Sources */,
+				4FFEA85E2AC868E8001F8FAF /* Test.swift in Sources */,
 				4FACA6AE2AC5E05E0090A8B1 /* GeneralTextField.swift in Sources */,
 				4FACA6872AC5AC9D0090A8B1 /* BookingScreen.swift in Sources */,
 				4FF82FAB2AC6FD2000E38198 /* ApartmentsListModel.swift in Sources */,
