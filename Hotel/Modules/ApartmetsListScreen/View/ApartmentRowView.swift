@@ -43,7 +43,11 @@ private extension ApartmentRow {
         }
     }
     var labels: some View {
-        LabelsList(labels: apartment.peculiarities)
+        HStack {
+            LabelsList(labels: apartment.peculiarities)
+                .frame(width: UIScreen.main.bounds.width - 32)
+            Spacer()
+        }
     }
     
     var aboutApartmentLabel: some View {
