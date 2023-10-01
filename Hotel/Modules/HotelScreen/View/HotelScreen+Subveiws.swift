@@ -77,10 +77,12 @@ extension HotelScreen {
     }
     
     var labels: some View {
-        Group {
+        HStack {
             if let labels = viewModel.info?.aboutTheHotel.peculiarities {
                 LabelsList(labels: labels)
+                    .frame(width: UIScreen.main.bounds.width - 32)
             }
+            Spacer()
         }
     }
     
