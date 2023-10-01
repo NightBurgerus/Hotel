@@ -24,7 +24,6 @@ struct LabelsList: View {
                          verticalSpacing: verticalSpacing,
                          subviews: labels.map {
                             GeneralLabel(text: $0)
-                                .fixedSize()
                         })
                         .frame(minWidth: frame.width, minHeight: frame.height)
     }

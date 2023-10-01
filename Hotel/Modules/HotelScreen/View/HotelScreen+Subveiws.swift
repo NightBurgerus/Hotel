@@ -77,7 +77,11 @@ extension HotelScreen {
     }
     
     var labels: some View {
-        LabelsList(labels: viewModel.info?.aboutTheHotel.peculiarities ?? [])
+        Group {
+            if let labels = viewModel.info?.aboutTheHotel.peculiarities {
+                LabelsList(labels: labels)
+            }
+        }
     }
     
     var hotelInfo: some View {

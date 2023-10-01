@@ -37,6 +37,9 @@ struct HotelScreen<ViewModel>: View where ViewModel: HotelViewModelProtocol {
             showLoadingIndicator.wrappedValue = true
             viewModel.loadData {
                 showLoadingIndicator.wrappedValue = false
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    print(self.viewModel.info?.aboutTheHotel.peculiarities)
+                }
             }
         }
     }

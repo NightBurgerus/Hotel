@@ -14,7 +14,7 @@ struct ApartmensListScreen<ViewModel>: View where ViewModel: ApartmentsListViewM
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack(spacing: 0) {
-                ForEach(0..<viewModel.rooms.count, id: \.self) { i in
+                ForEach(0..<viewModel.rooms.count, id: \.hashValue) { i in
                     ApartmentRow(apartment: viewModel.rooms[i])
                         .padding(.top, 8)
                 }
