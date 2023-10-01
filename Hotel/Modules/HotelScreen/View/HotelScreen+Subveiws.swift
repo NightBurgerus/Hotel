@@ -17,7 +17,7 @@ extension HotelScreen {
                 .multilineTextAlignment(.leading)
             Spacer()
         }
-        .frame(height: 26)
+//        .frame(height: 26)
     }
     
     var hotelAddressView: some View {
@@ -85,6 +85,7 @@ extension HotelScreen {
             Spacer()
         }
     }
+
     
     var hotelInfo: some View {
         HStack {
